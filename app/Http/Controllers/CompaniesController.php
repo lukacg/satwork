@@ -12,9 +12,9 @@ class CompaniesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+       return view('/companies.companies', ['companies' => Companies::all()]);
     }
 
     /**
@@ -35,7 +35,21 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only(['name', 'adress', 'contact_person', 'phone_number']);
+
+        if (count($data) > 0) {
+            $company = new Companies();
+            $company->name = $data['name'];
+            $company->adress = $data['adress'];
+            $company->contact_person = $data['contact_person'];
+            $company->phone_number = $data['phone_number'];
+
+            $company->save();
+            return redirect('/companies');
+            }
+
+        return view('/companies.newCompany');
+        
     }
 
     /**
@@ -55,9 +69,10 @@ class CompaniesController extends Controller
      * @param  \App\Companies  $companies
      * @return \Illuminate\Http\Response
      */
-    public function edit(Companies $companies)
-    {
-        //
+    public function edit($id)
+    {   
+        $company = Companies::where('id', $id)->first();
+        return view('/companies/editCompany', compact('company'));
     }
 
     /**
@@ -67,9 +82,19 @@ class CompaniesController extends Controller
      * @param  \App\Companies  $companies
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Companies $companies)
+    public function update($id, Request $request)
     {
-        //
+        $data = $request->only(['name', 'adress', 'contact_person', 'phone_number']);
+
+        $company = Companies::where('id', $id)->first();
+        $company->name = $data['name'];
+        $company->adress = $data['adress'];
+        $company->contact_person = $data['contact_person'];
+        $company->phone_number = $data['phone_number'];
+
+        $company->save();
+
+        return redirect('/companies');
     }
 
     /**
@@ -78,8 +103,12 @@ class CompaniesController extends Controller
      * @param  \App\Companies  $companies
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Companies $companies)
+
+    public function destroy($id, Request $request)
     {
-        //
+        $company = Companies::where('id', $id)->first();
+        $company->delete();
+
+        return redirect('/companies');
     }
 }

@@ -17,12 +17,12 @@ class CreateDriversTable extends Migration
 
         Schema::create('drivers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('phone_number');
-            $table->bigInteger('vehicle_id');
+            $table->string('name', 25)->nullable();
+            $table->string('phone_number', 15)->nullable();
+            $table->bigInteger('vehicle_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('vehicle_id')->reference('id')->on('vehicles');
+            $table->foreign('vehicle_id')->references('id')->on('vehicles');
         });
         Schema::enableForeignKeyConstraints();
 

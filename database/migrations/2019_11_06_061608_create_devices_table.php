@@ -17,14 +17,14 @@ class CreateDevicesTable extends Migration
 
         Schema::create('devices', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('type');
-            $table->date('purchase_date');
-            $table->date('activation_date');
-            $table->date('deactivation_date');
-            $table->bigInteger('vehicle_id');
+            $table->string('type', 20)->nullable();
+            $table->date('purchase_date')->nullable();
+            $table->date('activation_date')->nullable();
+            $table->date('deactivation_date')->nullable();
+            $table->bigInteger('company_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('vehicle_id')->reference('id')->on('vehicles');
+            $table->foreign('company_id')->references('id')->on('companies');
         });
         Schema::enableForeignKeyConstraints();
 

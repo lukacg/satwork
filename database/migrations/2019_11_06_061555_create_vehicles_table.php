@@ -17,13 +17,14 @@ class CreateVehiclesTable extends Migration
 
         Schema::create('vehicles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('type');
-            $table->string('model');
-            $table->date('production_year');
-            $table->bigInteger('company_id')->unsigned();
+            $table->string('type', 10)->nullable();
+            $table->string('model', 15)->nullable();
+            $table->date('production_year')->nullable();
+            $table->string('license_plate', 10)->nullable();
+            $table->bigInteger('device_id')->unsigned()->nullable();
             $table->timestamps();
 
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('device_id')->references('id')->on('devices');
         });
         Schema::enableForeignKeyConstraints();
     }

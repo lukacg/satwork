@@ -14,7 +14,7 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        //
+        return view('/devices.devices', ['devices' => Device::all()]);
     }
 
     /**
@@ -35,7 +35,24 @@ class DeviceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only(['type', 'purchase_date', 'activation_date', 'deactivation_date']);
+
+        if(count($data) > 0){
+            $device = new Device();
+
+            $device->type=$data['type'];
+            $device->purchase_date=$data['purchase_date'];
+            $device->activation_date=$data['activation_date'];
+            $device->deactivation_date=$data['deactivation_date'];
+            $device->companyId=$data['companyId'];
+
+            $device->save();
+            return redirect();
+            }
+
+        return view('/devices.newDevice');
+
+        
     }
 
     /**
@@ -57,7 +74,8 @@ class DeviceController extends Controller
      */
     public function edit(Device $device)
     {
-        //
+        $device = Devices::where('id', $id)->first();
+        return view('/devices/editDevice', compact('device'));
     }
 
     /**
@@ -67,9 +85,19 @@ class DeviceController extends Controller
      * @param  \App\Device  $device
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Device $device)
+    public function update($id, Request $request)
     {
-        //
+        $data = $request->only(['type', 'purchase_date', 'activation_date', 'deactivation_date']);
+
+        $device = Devices::where('id', $id)->first();
+        $device->type = $data['type'];
+        $device->purchase_date = $data['purchase_date'];
+        $device->activation_date = $data['activation_date'];
+        $device->deactivation_date = $data['deactivation_date'];
+
+        $device->save();
+
+        return redirect('/devices');
     }
 
     /**
@@ -78,8 +106,11 @@ class DeviceController extends Controller
      * @param  \App\Device  $device
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Device $device)
+    public function destroy($id, Request $request)
     {
-        //
+        $device = Devices::where('id', $id)->first();
+        $device->delete();
+
+        return redirect('/devices');
     }
 }
