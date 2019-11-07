@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Device;
+
 
 class Companies extends Model
 {
@@ -12,4 +14,7 @@ class Companies extends Model
         'id', 'name', 'adress', 'contact_person', 'phone_number'
     ];
 
+    public function devices(){
+        return $this->hasMany("App\Device", 'deviceId');
+    }
 }

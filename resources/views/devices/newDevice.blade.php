@@ -27,28 +27,29 @@
                         {{csrf_field()}}
            
                         <h3>Create new device</h3>
-                        <fieldset>
+                        <fieldset>Type:
                             <input placeholder="Type" type="text" name="type" tabindex="1">
                         </fieldset>
-                        <fieldset>
+                        <fieldset>Purchase date:
                             <input placeholder="Purchase date" type="date" name="purchase_date" tabindex="2">
                         </fieldset>
-                        <fieldset>
+                        <fieldset>Activation date:
                             <input placeholder="Activation date" type="date" name="activation_date" tabindex="3">
                         </fieldset>
-                        <fieldset>
+                        <fieldset>Deactivation date:
                             <input placeholder="Deactivation date" type="date" name="deactivation_date"tabindex="4">
                         </fieldset>
-                        <fieldset>
-                        <span>Company</span>
+                        <fieldset>Company:
                         <select name="companyId">
+                        @foreach ($companies as $company)
+                            <option value="{{$company->id}}">{{$company->name}}</option>
+                        @endforeach
+                        </select>
+                        </fieldset>
+                        <fieldset>
+                            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
                         </fieldset>
 
-                        <fieldset>
-                            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending"
-                           > Submit</button>
-                        </fieldset>
-                    
                     </div>
 
                     <div class="col-3">

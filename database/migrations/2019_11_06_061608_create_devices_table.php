@@ -21,10 +21,10 @@ class CreateDevicesTable extends Migration
             $table->date('purchase_date')->nullable();
             $table->date('activation_date')->nullable();
             $table->date('deactivation_date')->nullable();
-            $table->bigInteger('company_id')->unsigned();
+            $table->bigInteger('companyId')->unsigned();
             $table->timestamps();
 
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('companyId')->references('id')->on('companies');
         });
         Schema::enableForeignKeyConstraints();
 

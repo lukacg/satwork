@@ -19,10 +19,10 @@ class CreateDriversTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 25)->nullable();
             $table->string('phone_number', 15)->nullable();
-            $table->bigInteger('vehicle_id')->unsigned();
+            $table->bigInteger('vehicleId')->unsigned();
             $table->timestamps();
 
-            $table->foreign('vehicle_id')->references('id')->on('vehicles');
+            $table->foreign('vehicleId')->references('id')->on('vehicles');
         });
         Schema::enableForeignKeyConstraints();
 

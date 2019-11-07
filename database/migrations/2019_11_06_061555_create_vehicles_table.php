@@ -21,10 +21,10 @@ class CreateVehiclesTable extends Migration
             $table->string('model', 15)->nullable();
             $table->date('production_year')->nullable();
             $table->string('license_plate', 10)->nullable();
-            $table->bigInteger('device_id')->unsigned()->nullable();
+            $table->bigInteger('deviceId')->unsigned()->nullable();
             $table->timestamps();
 
-            $table->foreign('device_id')->references('id')->on('devices');
+            $table->foreign('deviceId')->references('id')->on('devices');
         });
         Schema::enableForeignKeyConstraints();
     }

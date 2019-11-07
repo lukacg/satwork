@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Device;
 use Illuminate\Http\Request;
+use App\Companies;
+
 
 class DeviceController extends Controller
 {
@@ -12,9 +14,19 @@ class DeviceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('/devices.devices', ['devices' => Device::all()]);
+
+       $device = Device::with(['company']);
+
+        if ($request->has('companyId')){
+            $device->where('companyId', $request->input('companyId'));
+        }
+
+        return view('/devices/devices', ['devices' => $device->get(), 'companies'=>Companies::all()]);
+    
+
+     //   return view('/devices.devices', ['devices' => Device::all()]);
     }
 
     /**
@@ -35,7 +47,7 @@ class DeviceController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(['type', 'purchase_date', 'activation_date', 'deactivation_date']);
+        $data = $request->only(['type', 'purchase_date', 'activation_date', 'deactivation_date', 'companyId']);
 
         if(count($data) > 0){
             $device = new Device();
@@ -47,10 +59,10 @@ class DeviceController extends Controller
             $device->companyId=$data['companyId'];
 
             $device->save();
-            return redirect();
+            return redirect('/devices');
             }
 
-        return view('/devices.newDevice');
+        return view('/devices.newDevice', ['companies'=>Companies::all()]);
 
         
     }
@@ -72,10 +84,11 @@ class DeviceController extends Controller
      * @param  \App\Device  $device
      * @return \Illuminate\Http\Response
      */
-    public function edit(Device $device)
+    public function edit($id)
     {
-        $device = Devices::where('id', $id)->first();
-        return view('/devices/editDevice', compact('device'));
+        $device = Device::where('id', $id)->first();
+        $company = Companies::all();
+        return view('/devices.editDevice', compact('device', 'company'));
     }
 
     /**
@@ -87,13 +100,14 @@ class DeviceController extends Controller
      */
     public function update($id, Request $request)
     {
-        $data = $request->only(['type', 'purchase_date', 'activation_date', 'deactivation_date']);
+        $data = $request->only(['type', 'purchase_date', 'activation_date', 'deactivation_date', 'companyId']);
 
-        $device = Devices::where('id', $id)->first();
+        $device = Device::where('id', $id)->first();
         $device->type = $data['type'];
         $device->purchase_date = $data['purchase_date'];
         $device->activation_date = $data['activation_date'];
         $device->deactivation_date = $data['deactivation_date'];
+        $device->companyId=$data['companyId'];
 
         $device->save();
 
@@ -108,7 +122,7 @@ class DeviceController extends Controller
      */
     public function destroy($id, Request $request)
     {
-        $device = Devices::where('id', $id)->first();
+        $device = Device::where('id', $id)->first();
         $device->delete();
 
         return redirect('/devices');
