@@ -15,7 +15,7 @@ class CompaniesController extends Controller
      */
     public function index(Request $request)
     {
-       return view('/companies.companies', ['companies' => Companies::all()]);
+        return view('/companies.companies', ['companies' => Companies::all()]);
     }
 
     /**
@@ -47,10 +47,9 @@ class CompaniesController extends Controller
 
             $company->save();
             return redirect('/companies');
-            }
+        }
 
         return view('/companies.newCompany');
-        
     }
 
     /**
@@ -71,7 +70,7 @@ class CompaniesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
+    {
         $company = Companies::where('id', $id)->first();
         return view('/companies/editCompany', compact('company'));
     }

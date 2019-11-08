@@ -13,6 +13,8 @@ class Device extends Model
         'id', 'type', 'purchase_date', 'activation_date', 'deactivation_date', 'companyId'
     ];
 
+    public $sortable = ['type'];
+
     public function company(){
         return $this->belongsTo('App\Companies', 'companyId');
     }

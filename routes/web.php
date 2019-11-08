@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', 'WelcomeController@index');
+
 //Companies
 Route::get('/companies', 'CompaniesController@index');
 Route::get('/newCompany', 'CompaniesController@store');
@@ -30,3 +32,4 @@ Route::post('/newDevice', 'DeviceController@store')->name('createdevice');
 Route::get('/editDevice/{id}', 'DeviceController@edit');
 Route::post('/editDevice/{id}', 'DeviceController@update')->name('updatedevice');
 Route::get('/deleteDevice/{id}', 'DeviceController@destroy');
+

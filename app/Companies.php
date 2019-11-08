@@ -14,6 +14,8 @@ class Companies extends Model
         'id', 'name', 'adress', 'contact_person', 'phone_number'
     ];
 
+    public $sortable = ['name'];
+
     public function devices(){
         return $this->hasMany("App\Device", 'deviceId');
     }

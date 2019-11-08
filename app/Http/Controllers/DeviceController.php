@@ -17,16 +17,16 @@ class DeviceController extends Controller
     public function index(Request $request)
     {
 
-       $device = Device::with(['company']);
+        $device = Device::with(['company']);
 
-        if ($request->has('companyId')){
+        if ($request->has('companyId')) {
             $device->where('companyId', $request->input('companyId'));
         }
 
-        return view('/devices/devices', ['devices' => $device->get(), 'companies'=>Companies::all()]);
-    
+        return view('/devices/devices', ['devices' => $device->get(), 'companies' => Companies::all()]);
 
-     //   return view('/devices.devices', ['devices' => Device::all()]);
+
+        //   return view('/devices.devices', ['devices' => Device::all()]);
     }
 
     /**
@@ -49,22 +49,20 @@ class DeviceController extends Controller
     {
         $data = $request->only(['type', 'purchase_date', 'activation_date', 'deactivation_date', 'companyId']);
 
-        if(count($data) > 0){
+        if (count($data) > 0) {
             $device = new Device();
 
-            $device->type=$data['type'];
-            $device->purchase_date=$data['purchase_date'];
-            $device->activation_date=$data['activation_date'];
-            $device->deactivation_date=$data['deactivation_date'];
-            $device->companyId=$data['companyId'];
+            $device->type = $data['type'];
+            $device->purchase_date = $data['purchase_date'];
+            $device->activation_date = $data['activation_date'];
+            $device->deactivation_date = $data['deactivation_date'];
+            $device->companyId = $data['companyId'];
 
             $device->save();
             return redirect('/devices');
-            }
+        }
 
-        return view('/devices.newDevice', ['companies'=>Companies::all()]);
-
-        
+        return view('/devices.newDevice', ['companies' => Companies::all()]);
     }
 
     /**
@@ -107,7 +105,7 @@ class DeviceController extends Controller
         $device->purchase_date = $data['purchase_date'];
         $device->activation_date = $data['activation_date'];
         $device->deactivation_date = $data['deactivation_date'];
-        $device->companyId=$data['companyId'];
+        $device->companyId = $data['companyId'];
 
         $device->save();
 
