@@ -33,3 +33,10 @@ Route::get('/editDevice/{id}', 'DeviceController@edit');
 Route::post('/editDevice/{id}', 'DeviceController@update')->name('updatedevice');
 Route::get('/deleteDevice/{id}', 'DeviceController@destroy');
 
+//Vehicles
+Route::get('/vehicles', 'VehicleController@index');
+Route::get('/newVehicle', 'VehicleController@store');
+Route::post('/newVehicle', 'VehicleController@store')->name('createvehicle');
+Route::get('/editVehicle/{id}', 'VehicleController@edit');
+Route::post('/editVehicle/{id}', 'VehicleController@update')->name('updatevehicle');
+Route::get('/deleteVehicle/{id}', 'VehicleController@destroy');

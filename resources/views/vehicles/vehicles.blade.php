@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <title>Devices</title>
+    <title>Vehicles</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
     <div class="containter">
 
         <br>
-        <button><a href="/newDevice">Add new Device</a></button>
+        <button><a href="/newVehicle">Add new Vehicle</a></button>
         <button><a href="/">Back</a></button>
 
         <br><br>
@@ -27,33 +27,29 @@
                 <thead>
                     <tr>
                         <th>Type</th>
-                        <th>Purchase date</th>
-                        <th>Activation date</th>
-                        <th>Deactivation date</th>
-                        <th>Company</th>
+                        <th>Model</th>
+                        <th>Production date</th>
+                        <th>License plate</th>
+                        <th>License plate</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @foreach($devices as $device)
+                    @foreach($vehicles as $vehicle)
                     <tr>
-                        <td>{{$device->type}}</td>
-                        <td>{{$device->purchase_date}}</td>
-                        <td>{{$device->activation_date}}</td>
-                        <td>{{$device->deactivation_date}}</td>
-                        <td>{{$device->company->name}}</a>
+                        <td>{{$vehicle->type}}</td>
+                        <td>{{$vehicle->model}}</td>
+                        <td>{{$vehicle->production_date}}</td>
+                        <td>{{$vehicle->license_plate}}</td>
+                        <td>{{$vehicle->device->type}}</a>
 
                         <td>
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
                         </td>
 
-
-
-                        <!-- <button><a href="editDevice/{{$device->id}}">Edit</button></a>  -->
-
-                        <td><a onclick="return confirm('Are You sure?')" href="deleteDevice/{{$device->id}}"><button>Delete</button></a></td>
+                        <td><a onclick="return confirm('Are You sure?')" href="deleteVehicle/{{$vehicle->id}}"><button>Delete</button></a></td>
                     </tr>
                     @endforeach
 
@@ -65,13 +61,13 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Device edit</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Vehicle edit</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        @include('devices.editDevice')
+                        @include('vehicles.editVehicle')
 
                     </div>
                     <div class="modal-footer">

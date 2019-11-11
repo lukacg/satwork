@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Device;
 use Illuminate\Http\Request;
 use App\Companies;
+use App\Vehicle;
 
 
 class DeviceController extends Controller

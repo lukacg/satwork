@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Device;
+use App\Vehicle;
 
 
 class Companies extends Model

@@ -104,30 +104,28 @@
 
             <div class="container">
                 <table id="myTable" class="table table-bordered">
-                    <tr>
-                        <th onclick="sortTable(0)">Companies</th>
-                        <th onclick="sortTable(1)">Devices</th>
-                        <th onclick="sortTable(2)">Vehicles</th>
-                        <th onclick="sortTable(3)">Drivers</th>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0)">Companies</th>
+                            <th onclick="sortTable(1)">Devices</th>
+                            <th onclick="sortTable(2)">Vehicles</th>
+                            <th onclick="sortTable(3)">Drivers</th>
+                        </tr>
+                    </thead>
 
-                    @foreach($companies as $company)
-                    <tr>
-                        <td>{{$company->name}}</td>
-                    </tr>
-                    @endforeach
-
-                    @foreach($devices as $device)
-                    <tr>
-                        <td>{{$device->type}}</td>
-                    </tr>
-                    @endforeach
-
-                    <tr>
-                        <td></td>
-                        
-                        <td></td>
-                    </tr>
+                    <tbody>
+                        @foreach($companies as $company)
+                        <tr>
+                            <td>{{$company->name}}</td>
+                        </tr>
+                        @endforeach
+        
+                        @foreach($devices as $device)
+                        <tr>
+                            <td>{{$device->type}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>

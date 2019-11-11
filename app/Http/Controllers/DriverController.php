@@ -12,9 +12,15 @@ class DriverController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $driver = Driver::with(['vehicle']);
+
+        if ($request->has('vehicleId')) {
+            $driver->where('vehicleId', $request->input('vehicleId'));
+        }
+
+        return view('/drivers.drivers', ['drivers' => $driver->get(), 'vehicles' => Vehicle::all()]);
     }
 
     /**
@@ -35,7 +41,21 @@ class DriverController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only(['name', 'phone_number', 'vehicleId']);
+
+        if (count($data) > 0) {
+            $driver = new Driver();
+
+            $driver->name = $data['name'];
+            $driver->phone_number = $data['phone_number'];
+            $driver->vehicleId = $data['vehicleId'];
+
+            $driver->save();
+            return redirect('/drivers');
+
+        }
+
+        return view('/drivers.newDriver', ['vehicles' => Vehicle::all()]);
     }
 
     /**

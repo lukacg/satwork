@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Companies;
+use App\Vehicle;
 
 class Device extends Model
 {
@@ -17,5 +18,9 @@ class Device extends Model
 
     public function company(){
         return $this->belongsTo('App\Companies', 'companyId');
+    }
+
+    public function vehicles(){
+        return $this->hasMany("App\Vehicle", 'vehicleId');
     }
 }

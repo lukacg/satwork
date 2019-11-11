@@ -19,7 +19,7 @@ class CreateVehiclesTable extends Migration
             $table->bigIncrements('id');
             $table->string('type', 10)->nullable();
             $table->string('model', 15)->nullable();
-            $table->date('production_year')->nullable();
+            $table->year('production_year')->nullable();
             $table->string('license_plate', 10)->nullable();
             $table->bigInteger('deviceId')->unsigned()->nullable();
             $table->timestamps();

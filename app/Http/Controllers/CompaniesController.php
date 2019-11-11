@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Companies;
 use Illuminate\Http\Request;
 use App\Device;
+use App\Vehicle;
 
 class CompaniesController extends Controller
 {

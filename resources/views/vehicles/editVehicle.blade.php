@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <title>Edit device</title>
+    <title>Edit vehicle</title>
 </head>
 <body>
 
@@ -22,27 +22,27 @@
                     <br><br>
                         <!-- <button type="button" class="btn btn-secondary btn-sm"><a href="/devices">Back</button></a> -->
 
-                        <form id="contact" action="{{route('updatedevice', $device->id)}}" method="POST">
+                        <form id="contact" action="{{route('updatevehicle', $vehicle->id)}}" method="POST">
                         {{csrf_field()}}
            
-                        <h3>Edit device</h3>
-                        Type:<br><input placeholder="Type"  type="text" name ="type" value="{{$device->type}}" tabindex="1"  autofocus>
+                        <h3>Edit vehicle</h3>
+                        Type:<br><input placeholder="Type"  type="text" name ="type" value="{{$vehicle->type}}" tabindex="1"  autofocus>
                         </fieldset>
                         <fieldset>
-                        Purchase date:<br><input placeholder="Purchase date" type="date" name="purchase_date" value="{{$device->purchase_date}}" tabindex="2" >
+                        Model:<br><input placeholder="Model" type="text" name="model" value="{{$vehicle->model}}" tabindex="2" autofocus>
                         </fieldset>
                         <fieldset>
-                        Activation date:<br><input placeholder="Activation date" type="date" name="activation_date" value="{{$device->activation_date}}" tabindex="3" >
+                        Production year:<br><input placeholder="Production year" type="number" min="1980" max="2030" step="1" name="activation_date" value="{{$vehicle->production_year}}" tabindex="3" >
                         </fieldset>
                         <fieldset>
-                        Deactivation date:<br><input placeholder="Deactivation date" type="date" name="deactivation_date" value="{{$device->deactivation_date}}" tabindex="4">
+                        License plate:<br><input placeholder="License plate" type="text" name="license_plate" value="{{$vehicle->license_plate}}" tabindex="4">
                         </fieldset>
                         
                         <fieldset>
-                        <span>Company</span>
-                        <select name="companyId">
-                        @foreach($companies as $com)
-                            <option value="{{$com->id}}" @if ($com->id == $device->companyId) selected @endif>{{$com->name}}</option>
+                        <span>Device</span>
+                        <select name="deviceId">
+                        @foreach($devices as $dev)
+                            <option value="{{$dev->id}}" @if ($dev->id == $vehicle->companyId) selected @endif>{{$dev->type}}</option>
                         @endforeach
                         </select>
                         </fieldset>
