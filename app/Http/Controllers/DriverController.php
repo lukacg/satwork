@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Driver;
 use Illuminate\Http\Request;
+use App\Vehicle;
 
 class DriverController extends Controller
 {
@@ -75,9 +76,11 @@ class DriverController extends Controller
      * @param  \App\Driver  $driver
      * @return \Illuminate\Http\Response
      */
-    public function edit(Driver $driver)
+    public function edit($id)
     {
-        //
+        $driver = Driver::where('id', $id)->first();
+        $vehicle = Vehicle::all();
+        return view('/drivers.editDriver', compact('driver', 'vehicle'));
     }
 
     /**
@@ -87,9 +90,18 @@ class DriverController extends Controller
      * @param  \App\Driver  $driver
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Driver $driver)
+    public function update($id, Request $request)
     {
-        //
+        $data = $request->only(['name', 'phone_number', 'vehicleId']);
+
+        $driver = Driver::where('id', $id)->first;
+        $driver->name = $data['name'];
+        $driver->phone_number = $data['phone_number'];
+        $driver->vehicleId = $data['vehicleId'];
+
+        $vehicle->save();
+
+        return redirect('/vehicles');
     }
 
     /**
@@ -98,8 +110,11 @@ class DriverController extends Controller
      * @param  \App\Driver  $driver
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Driver $driver)
+    public function destroy($id, Request $request)
     {
-        //
+        $driver = Driver::where('id', $id)->first();
+        $driver->delete();
+
+        return redirect('/vehicles');
     }
 }

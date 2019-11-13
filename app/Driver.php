@@ -16,6 +16,6 @@ class Driver extends Model
     public $sortable = ['name'];
 
     public function vehicle(){
-        return $this->belogsTo('App\Vehicle', 'vehicleId');
+        return $this->belongsTo('App\Vehicle', 'vehicleId');
     }
 }

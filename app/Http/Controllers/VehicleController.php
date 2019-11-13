@@ -101,7 +101,7 @@ class VehicleController extends Controller
     {
         $data = $request->only(['type', 'model', 'production_year', 'licence_plate', 'deviceId']);
 
-        $vehicle = Vehicle::where('id', $id)->fist();
+        $vehicle = Vehicle::where('id', $id)->first();
         $vehicle->type = $data['type'];
         $vehicle->model = $data['model'];
         $vehicle->production_year = $data['production_year'];

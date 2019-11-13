@@ -40,3 +40,11 @@ Route::post('/newVehicle', 'VehicleController@store')->name('createvehicle');
 Route::get('/editVehicle/{id}', 'VehicleController@edit');
 Route::post('/editVehicle/{id}', 'VehicleController@update')->name('updatevehicle');
 Route::get('/deleteVehicle/{id}', 'VehicleController@destroy');
+
+//Drivers
+Route::get('/drivers', 'DriverController@index');
+Route::get('/newDriver', 'DriverController@store');
+Route::post('/newDriver', 'DriverController@store')->name('createdriver');
+Route::get('/editDriver/{id}', 'DriverController@edit');
+Route::post('/editDriver/{id}', 'DriverController@update')->name('updatedriver');
+Route::get('/deleteDriver/{id}', 'DriverController@destroy');

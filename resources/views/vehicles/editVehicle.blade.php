@@ -32,7 +32,7 @@
                         Model:<br><input placeholder="Model" type="text" name="model" value="{{$vehicle->model}}" tabindex="2" autofocus>
                         </fieldset>
                         <fieldset>
-                        Production year:<br><input placeholder="Production year" type="number" min="1980" max="2030" step="1" name="activation_date" value="{{$vehicle->production_year}}" tabindex="3" >
+                        Production year:<br><input placeholder="Production year" type="number" min="1980" max="2030" step="1" name="production_year" value="{{$vehicle->production_year}}" tabindex="3" >
                         </fieldset>
                         <fieldset>
                         License plate:<br><input placeholder="License plate" type="text" name="license_plate" value="{{$vehicle->license_plate}}" tabindex="4">
