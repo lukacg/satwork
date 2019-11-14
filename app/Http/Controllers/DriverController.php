@@ -99,7 +99,7 @@ class DriverController extends Controller
         $driver->phone_number = $data['phone_number'];
         $driver->vehicleId = $data['vehicleId'];
 
-        $vehicle->save();
+        $driver->save();
 
         return redirect('/drivers');
     }

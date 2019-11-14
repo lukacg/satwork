@@ -82,10 +82,10 @@
                 <button class="dropbtn">For users</button>
                 <div class="dropdown-content" style="left:0;">
                     @if (Auth::check())
-                    <li class="nav-item" style="padding:3px"><a class="btn btn-primary float-left" href="/logout" role="button">Logout</a></li>
+                    <a class="float-left" href="/logout" role="button">Logout</a></li>
                     @else
-                    <li class="nav-item" style="padding:3px"><a class="btn btn-primary float-left" href="/register" role="button"> Register</a></li>
-                    <li class="nav-item" style="padding:3px"><a class="btn btn-primary float-left" href="/login" role="button">Login</a></li>
+                    <a class="float-left" href="/register" role="button"> Register</a></li>
+                    <a class="float-left" href="/login" role="button">Login</a></li>
                     @endif
                 </div>
             </div>
@@ -101,7 +101,7 @@
                 </div>
             </div>
 
-
+          
         </div>
     </header>
 
@@ -137,14 +137,21 @@
                 </thead>
 
                 <tbody>
-                    <tr>
                     @foreach($companies as $company)
+                    <tr>
 
-                        <th>{{$company->name}}</th>
-                        <th>{$device->type}</th>
-                        <th>($vehicle->license_plate)</th>
-                        <th>($driver->name)</th>
+                    <th onclick="sortTable(0)">$companies as $company</th>
+                        <th onclick="sortTable(1)">{$device->type}</th>
+                        <th onclick="sortTable(2)">Vehicles</th>
+                        <th onclick="sortTable(3)">Drivers</th>
 
+                        <td>{{$company->name}}</td>
+                    </tr>
+                    @endforeach
+
+                    @foreach($devices as $device)
+                    <tr>
+                        <td>{{$device->type}}</td>
                     </tr>
                     @endforeach
                 </tbody>

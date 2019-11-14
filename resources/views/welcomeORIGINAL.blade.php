@@ -101,7 +101,7 @@
                 </div>
             </div>
 
-
+          
         </div>
     </header>
 
@@ -137,14 +137,15 @@
                 </thead>
 
                 <tbody>
-                    <tr>
                     @foreach($companies as $company)
+                    <tr>
+                        <td>{{$company->name}}</td>
+                    </tr>
+                    @endforeach
 
-                        <th>{{$company->name}}</th>
-                        <th>{$device->type}</th>
-                        <th>($vehicle->license_plate)</th>
-                        <th>($driver->name)</th>
-
+                    @foreach($devices as $device)
+                    <tr>
+                        <td>{{$device->type}}</td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -12,6 +12,7 @@ class CompaniesTableSeeder extends Seeder
     public function run()
     {
         DB::table('companies')->insert([
+            'id' => 1,
             'name' => 'Satwork',
             'adress' => 'Bulevar Stepe Stepanovica 132',
             'contact_person' => 'Marko Trtic',
@@ -19,6 +20,7 @@ class CompaniesTableSeeder extends Seeder
         ]);
 
         DB::table('companies')->insert([
+            'id' => 2,
             'name' => 'BL Pivara',
             'adress' => 'Slatinska 8',
             'contact_person' => 'Nick Penny',
@@ -26,6 +28,7 @@ class CompaniesTableSeeder extends Seeder
         ]);
 
         DB::table('companies')->insert([
+            'id' => 3,
             'name' => 'Vidovic Auto',
             'adress' => 'Bulevar Petra Bojovica',
             'contact_person' => 'Veso Vidovic',
@@ -33,6 +36,7 @@ class CompaniesTableSeeder extends Seeder
         ]);
 
         DB::table('companies')->insert([
+            'id' => 4,
             'name' => 'Neco Trade',
             'adress' => 'Kralja Aleksandra I',
             'contact_person' => 'Neco Neco',

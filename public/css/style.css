@@ -1,5 +1,20 @@
-.footerMain{
-    position:fixed;
-    bottom:0;
-    width:100%
+/*Footer*/
+.footerMain {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
+
+/* Nav Meu Container */
+#nav-menu-container {
+    float: right;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    #nav-menu-container {
+      display: none;
+    }
+  }
+
+  

@@ -12,11 +12,13 @@
     <title>@yield("title")</title>
     
 </head>
-
+<header>
+</header>
 <body>
+
 <div class="container-fluid">
 
-    @include("layouts.menu")
+    @include("layouts.navi")
 
     @yield("content")
 

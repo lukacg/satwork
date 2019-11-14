@@ -19,32 +19,36 @@ Route::get('/', 'WelcomeController@index');
 
 //Companies
 Route::get('/companies', 'CompaniesController@index');
-Route::get('/newCompany', 'CompaniesController@store');
-Route::post('/newCompany', 'CompaniesController@store')->name('createcompany');
-Route::get('/editCompany/{id}', 'CompaniesController@edit');
-Route::post('/editCompany/{id}', 'CompaniesController@update')->name('updatecompany');
-Route::get('/deleteCompany/{id}', 'CompaniesController@destroy');
+Route::get('/newCompany', 'CompaniesController@store')->middleware('auth');
+Route::post('/newCompany', 'CompaniesController@store')->name('createcompany')->middleware('auth');
+Route::get('/editCompany/{id}', 'CompaniesController@edit')->middleware('auth');
+Route::post('/editCompany/{id}', 'CompaniesController@update')->name('updatecompany')->middleware('auth');
+Route::get('/deleteCompany/{id}', 'CompaniesController@destroy')->middleware('auth');
 
 //Device
 Route::get('/devices', 'DeviceController@index');
-Route::get('/newDevice', 'DeviceController@store');
-Route::post('/newDevice', 'DeviceController@store')->name('createdevice');
-Route::get('/editDevice/{id}', 'DeviceController@edit');
-Route::post('/editDevice/{id}', 'DeviceController@update')->name('updatedevice');
-Route::get('/deleteDevice/{id}', 'DeviceController@destroy');
+Route::get('/newDevice', 'DeviceController@store')->middleware('auth');
+Route::post('/newDevice', 'DeviceController@store')->name('createdevice')->middleware('auth');
+Route::get('/editDevice/{id}', 'DeviceController@edit')->middleware('auth');
+Route::post('/editDevice/{id}', 'DeviceController@update')->name('updatedevice')->middleware('auth');
+Route::get('/deleteDevice/{id}', 'DeviceController@destroy')->middleware('auth');
 
 //Vehicles
 Route::get('/vehicles', 'VehicleController@index');
-Route::get('/newVehicle', 'VehicleController@store');
-Route::post('/newVehicle', 'VehicleController@store')->name('createvehicle');
-Route::get('/editVehicle/{id}', 'VehicleController@edit');
-Route::post('/editVehicle/{id}', 'VehicleController@update')->name('updatevehicle');
-Route::get('/deleteVehicle/{id}', 'VehicleController@destroy');
+Route::get('/newVehicle', 'VehicleController@store')->middleware('auth');
+Route::post('/newVehicle', 'VehicleController@store')->name('createvehicle')->middleware('auth');
+Route::get('/editVehicle/{id}', 'VehicleController@edit')->middleware('auth');
+Route::post('/editVehicle/{id}', 'VehicleController@update')->name('updatevehicle')->middleware('auth');
+Route::get('/deleteVehicle/{id}', 'VehicleController@destroy')->middleware('auth');
 
 //Drivers
 Route::get('/drivers', 'DriverController@index');
-Route::get('/newDriver', 'DriverController@store');
-Route::post('/newDriver', 'DriverController@store')->name('createdriver');
-Route::get('/editDriver/{id}', 'DriverController@edit');
-Route::post('/editDriver/{id}', 'DriverController@update')->name('updatedriver');
-Route::get('/deleteDriver/{id}', 'DriverController@destroy');
+Route::get('/newDriver', 'DriverController@store')->middleware('auth');
+Route::post('/newDriver', 'DriverController@store')->name('createdriver')->middleware('auth');
+Route::get('/editDriver/{id}', 'DriverController@edit')->middleware('auth');
+Route::post('/editDriver/{id}', 'DriverController@update')->name('updatedriver')->middleware('auth');
+Route::get('/deleteDriver/{id}', 'DriverController@destroy')->middleware('auth');
+Auth::routes();
+
+//Login
+Route::get('/home', 'HomeController@index')->name('home');
