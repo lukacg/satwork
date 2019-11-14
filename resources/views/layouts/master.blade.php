@@ -26,4 +26,5 @@
 <div class="footerMain text-center py-3">© 2019 Copyright:
         <a href="https://www.satwork.net/"> Satwork</a>
         <p>Contact information: <a href="mailto:info@satwork.net">info@satwork.net</a>.</p>
+</div>
 </html>

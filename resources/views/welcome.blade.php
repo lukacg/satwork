@@ -16,6 +16,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <link href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" rel="stylesheet" />
+    
     <style>
         html,
         body {
@@ -129,6 +130,11 @@
                 </table>
             </div>
         </div>
+    </div>
+
+    <div class="footerMain text-center py-3">© 2019 Copyright:
+        <a href="https://www.satwork.net/"> Satwork</a>
+        <p>Contact information: <a href="mailto:info@satwork.net">info@satwork.net</a>.</p> 
     </div>
 
     <script>

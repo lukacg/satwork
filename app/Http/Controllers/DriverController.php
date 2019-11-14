@@ -101,7 +101,7 @@ class DriverController extends Controller
 
         $vehicle->save();
 
-        return redirect('/vehicles');
+        return redirect('/drivers');
     }
 
     /**
@@ -115,6 +115,6 @@ class DriverController extends Controller
         $driver = Driver::where('id', $id)->first();
         $driver->delete();
 
-        return redirect('/vehicles');
+        return redirect('/drivers');
     }
 }

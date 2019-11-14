@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <title>New device</title>
-</head>
-<body>
+@extends("../layouts.master")
+
+@section("content")
+
+@section("title")
+New device
+@endsection
 
     <div class="containter">
         <div class="row">
@@ -21,7 +16,7 @@
                     <div class="container">
 
                         <br><br>
-                        <a href="/devices"><button type="button" class="btn btn-secondary btn-lg btn-block">Povratak nazad</button></a>
+                        <a href="/devices"><button type="button" class="btn btn-secondary btn-lg btn-block">Back</button></a>
 
                         <form id="contact" action="{{route('createdevice')}}" method="POST" enctype="multipart/form-data">
                         {{csrf_field()}}
@@ -57,5 +52,5 @@
                 </div>
         </div>
     </div>
-</body>
-</html>
+
+@endsection
