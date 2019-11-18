@@ -137,13 +137,13 @@
                 </thead>
 
                 <tbody>
+                    
+                    @foreach($items as $company)
                     <tr>
-                    @foreach($companies as $company)
-
-                        <th>{{$company->name}}</th>
-                        <th>{$device->type}</th>
-                        <th>($vehicle->license_plate)</th>
-                        <th>($driver->name)</th>
+                        <td>{{isset($company['company'])?$company['company']->name:''}}</td>
+                        <td>{{isset($company['device'])?$company['device']->type:''}}</td>
+                        <td>{{isset($company['vehicle'])?$company['vehicle']->type:''}}</td>
+                        <td>{{isset($company['driver'])?$company['driver']->name:''}}</td>
 
                     </tr>
                     @endforeach
