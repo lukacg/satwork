@@ -16,6 +16,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <link href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <style>
@@ -74,39 +75,38 @@
 </head>
 
 <body>
-    <header id="header">
-        <div class="container">
+    <nav class="navbar navbar-inverse">
 
+        <div class="container-fluid">
 
-            <div class="dropdown" style="float:left;">
-                <button class="dropbtn">For users</button>
-                <div class="dropdown-content" style="left:0;">
-                    @if (Auth::check())
-                    <li class="nav-item" style="padding:3px"><a class="btn btn-primary float-left" href="/logout" role="button">Logout</a></li>
-                    @else
-                    <li class="nav-item" style="padding:3px"><a class="btn btn-primary float-left" href="/register" role="button"> Register</a></li>
-                    <li class="nav-item" style="padding:3px"><a class="btn btn-primary float-left" href="/login" role="button">Login</a></li>
-                    @endif
-                </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">SATWORK</a>
             </div>
 
-            <div class="dropdown" style="float:right;">
-                <button class="dropbtn">Menu</button>
-                <div class="dropdown-content">
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">Menu</button>
+                <div id="myDropdown" class="dropdown-content">
                     <a href="/companies">Companies</a>
                     <a href="/devices">Devices</a>
                     <a href="/vehicles">Vehicles</a>
                     <a href="/drivers">Drivers</a>
-
                 </div>
             </div>
 
+            <ul class="nav navbar-nav navbar-right">
+                @if (Auth::check())
+                <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a>
+                <li>
+                    @else
+                <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                @endif
+            </ul>
 
         </div>
-    </header>
+    </nav>
 
-
-
+        <br><br>
 
 
 
@@ -137,7 +137,7 @@
                 </thead>
 
                 <tbody>
-                    
+
                     @foreach($items as $company)
                     <tr>
                         <td>{{isset($company['company'])?$company['company']->name:''}}</td>
@@ -148,12 +148,13 @@
                     </tr>
                     @endforeach
                 </tbody>
+                
             </table>
         </div>
     </div>
     </div>
 
-    <div class="footerMain text-center py-3">© 2019 Copyright:
+    <div class="footerFirst text-center py-3">© 2019 Copyright:
         <a href="https://www.satwork.net/"> Satwork</a>
         <p>Contact information: <a href="mailto:info@satwork.net">info@satwork.net</a>.</p>
     </div>
@@ -163,7 +164,7 @@
         var element = document.getElementById('osm-map');
 
         // Height has to be set. You can do this in CSS too.
-        element.style = 'height:300px;', 'width:500px;';
+        element.style = 'height:350px;', 'width:500px;';
 
         // Create Leaflet map on map element.
         var map = L.map(element);
@@ -234,6 +235,28 @@
                     if (switchcount == 0 && dir == "asc") {
                         dir = "desc";
                         switching = true;
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
                     }
                 }
             }

@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
@@ -75,7 +76,6 @@
 
 <body>
     <header id="header">
-        <div class="container">
 
 
             <div class="dropdown" style="float:left;">
@@ -101,7 +101,7 @@
                 </div>
             </div>
 
-          
+
         </div>
     </header>
 
@@ -137,15 +137,14 @@
                 </thead>
 
                 <tbody>
-                    @foreach($companies as $company)
+                    
+                    @foreach($items as $company)
                     <tr>
-                        <td>{{$company->name}}</td>
-                    </tr>
-                    @endforeach
+                        <td>{{isset($company['company'])?$company['company']->name:''}}</td>
+                        <td>{{isset($company['device'])?$company['device']->type:''}}</td>
+                        <td>{{isset($company['vehicle'])?$company['vehicle']->type:''}}</td>
+                        <td>{{isset($company['driver'])?$company['driver']->name:''}}</td>
 
-                    @foreach($devices as $device)
-                    <tr>
-                        <td>{{$device->type}}</td>
                     </tr>
                     @endforeach
                 </tbody>

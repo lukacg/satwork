@@ -52,3 +52,5 @@ Auth::routes();
 
 //Login
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
