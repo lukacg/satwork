@@ -71,10 +71,17 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+
+        .containter {
+            padding-bottom: 60px;
+        }
+       
     </style>
+    
 </head>
 
 <body>
+
     <nav class="navbar navbar-inverse">
 
         <div class="container-fluid">
@@ -106,27 +113,31 @@
         </div>
     </nav>
 
-        <br><br>
+    <br><br>
 
 
 
     <div class="content">
+
         <div class="title m-b-md">
-            <img src="img/LogoIndex.png" alt="Logo" style="width:500px;">
+            <img src="img/LogoIndex.png" alt="Logo" class="responsive">
         </div>
 
         <div id="osm-map"></div>
-        <br>
+
+        <br><br>
+
         <div class="links">
             <a href="/companies">Companies</a>
             <a href="/devices">Devices</a>
             <a href="/vehicles">Vehicles</a>
             <a href="/drivers">Drivers</a>
         </div>
+
         <br><br>
 
         <div class="container">
-            <table id="myTable" class="table table-bordered">
+            <table id="myTable" class="table table-bordered sortable">
                 <thead>
                     <tr>
                         <th onclick="sortTable(0)">Companies</th>
@@ -147,18 +158,15 @@
 
                     </tr>
                     @endforeach
+
+
                 </tbody>
-                
+
             </table>
         </div>
     </div>
-    </div>
 
-    <div class="footerFirst text-center py-3">© 2019 Copyright:
-        <a href="https://www.satwork.net/"> Satwork</a>
-        <p>Contact information: <a href="mailto:info@satwork.net">info@satwork.net</a>.</p>
-    </div>
-
+    <!-- OSM Map -->
     <script>
         // Where you want to render the map.
         var element = document.getElementById('osm-map');
@@ -184,6 +192,7 @@
         L.marker(target).addTo(map);
     </script>
 
+    <!-- Table sorting -->
     <script>
         function sortTable(n) {
             var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -241,6 +250,7 @@
         }
     </script>
 
+    <!-- Navi Dropdown -->
     <script>
         /* When the user clicks on the button, 
         toggle between hiding and showing the dropdown content */
@@ -264,5 +274,10 @@
     </script>
 
 </body>
+
+<div class="footerFirst">
+    <p>© 2019 Copyright: <a href="https://www.satwork.net/"> Satwork</a></p>
+    <p>Contact information: <a href="mailto:info@satwork.net">info@satwork.net</a>.</p>
+</div>
 
 </html>

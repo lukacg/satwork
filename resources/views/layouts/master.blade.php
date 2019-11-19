@@ -16,17 +16,20 @@
 </header>
 <body>
 
+@include("layouts.navi")
+
 <div class="container-fluid">
 
-    @include("layouts.navi")
 
     @yield("content")
 
 </div>
-</body>
 
 <div class="footerMain text-center py-3">© 2019 Copyright:
         <a href="https://www.satwork.net/"> Satwork</a>
         <p>Contact information: <a href="mailto:info@satwork.net">info@satwork.net</a>.</p>
 </div>
+</body>
+
+
 </html>

@@ -40,8 +40,8 @@
 
             <a href="/logout" class="btn float-left">
               @if (Auth::check())
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="/logout" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                {{ Auth::user()->name }} <span class="caret"></span></a>
+              <a id="navbarDropdown" class="nav-link dropdown-toggle float-right" href="/logout" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                {{ Auth::user()->name }} </a>
               <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown" style="position:absolute">
                 <a class="dropdown-item" href="{{ route('logout') }}">
                   {{ __('Logout') }}
