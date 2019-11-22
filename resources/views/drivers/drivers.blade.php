@@ -3,43 +3,46 @@
 @section("content")
 
 @section("title")
-Drivers 
+Drivers
 @endsection
 
-    <div class="containter">
+<div class="containter">
 
-        <br>
-        <button><a href="/newDriver">Add new Driver</a></button>
-        <button><a href="/">Back</a></button>
+    <br>
+    <button><a href="/newDriver">Add new Driver</a></button>
+    <button><a href="/">Back</a></button>
 
-        <br><br>
-        <div class="table-responsive">
-            <table class="table blueTable">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Phone number</th>
-                        <th>Vehicle (license_plate)</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
+    <br><br>
+    <div class="table-responsive">
+        <table class="table blueTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone number</th>
+                    <th>Vehicle (license_plate)</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
 
-                <tbody>
-                    @foreach($drivers as $driver)
-                    <tr>
-                        <td>{{$driver->name}}</td>
-                        <td>{{$driver->phone_number}}</td>
-                        <td>{{$driver->vehicle->license_plate}}</a>
+            <tbody>
+                @foreach($drivers as $driver)
+                <tr>
+                    <td>{{$driver->name}}</td>
+                    <td>{{$driver->phone_number}}</td>
+                    <td>{{$driver->vehicle->license_plate}}</a>
 
-                        <td><button><a href="editDriver/{{$driver->id}}">Edit</button></a></td>
-                        <td><a onclick="return confirm('Are You sure?')" href="deleteDriver/{{$driver->id}}"><button>Delete</button></a></td>
-                    </tr>
-                    @endforeach
+                    <td><button><a href="editDriver/{{$driver->id}}">Edit</button></a></td>
+                    <td><a onclick="return confirm('Are You sure?')" href="deleteDriver/{{$driver->id}}"><button>Delete</button></a></td>
+                </tr>
+                @endforeach
 
-                </tbody>
-            </table>
-        </div>
+                <div>
+                    {{ $drivers->links() }}
+                </div>
+            </tbody>
+        </table>
+    </div>
 
-     
-@endsection
+
+    @endsection

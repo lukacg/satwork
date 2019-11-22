@@ -21,7 +21,7 @@ class DriverController extends Controller
             $driver->where('vehicleId', $request->input('vehicleId'));
         }
 
-        return view('/drivers.drivers', ['drivers' => $driver->get(), 'vehicles' => Vehicle::all()]);
+        return view('/drivers.drivers', ['drivers' => $driver->paginate(5), 'vehicles' => Vehicle::all()]);
     }
 
     /**

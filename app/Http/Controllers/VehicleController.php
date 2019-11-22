@@ -23,7 +23,7 @@ class VehicleController extends Controller
             $vehicle->where('deviceId', $request->input('deviceId'));
         }
 
-        return view('/vehicles.vehicles', ['vehicles' => $vehicle->get(), 'devices' => Device::all()]);
+        return view('/vehicles.vehicles', ['vehicles' => $vehicle->paginate(5), 'devices' => Device::all()]);
 
 
         //   return view('/vehicles.vehicles', ['vehicles' => Vehicle::all()]);

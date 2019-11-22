@@ -24,7 +24,7 @@ class DeviceController extends Controller
             $device->where('companyId', $request->input('companyId'));
         }
 
-        return view('/devices/devices', ['devices' => $device->get(), 'companies' => Companies::all()]);
+        return view('/devices/devices', ['devices' => $device->paginate(5), 'companies' => Companies::all()]);
 
 
         //   return view('/devices.devices', ['devices' => Device::all()]);

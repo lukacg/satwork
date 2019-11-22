@@ -21,6 +21,6 @@ class Device extends Model
     }
 
     public function vehicles(){
-        return $this->hasMany("App\Vehicle", 'vehicleId');
+        return $this->hasOne("App\Vehicle", 'vehicleId');
     }
 }

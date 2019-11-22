@@ -13,25 +13,22 @@ class WelcomeController extends Controller
 {
     public function index(Request $request)
     {
-        $companies = Companies::paginate(5);
-        $devices = Device::paginate(5);
-        $vehicles = Vehicle::paginate(5);
-        $drivers = Driver::paginate(5);
+      
 
 
         $items = [];
-        foreach (Companies::all() as $comp) $items[]['company']=$comp;
-        foreach (Device::all() as $index => $dev){
+        foreach (Companies::paginate(5) as $comp) $items[]['company']=$comp;
+        foreach (Device::paginate(5) as $index => $dev){
             if($items[$index]) $items[$index]['device']=$dev;
             else $items[]['device']=$dev;
         }
 
-        foreach (Vehicle::all() as $index => $veh){
+        foreach (Vehicle::paginate(5) as $index => $veh){
             if($items[$index]) $items[$index]['vehicle']=$veh;
             else $items[]['vehicle']=$veh;
         }
 
-        foreach (Driver::all() as $index => $dr){
+        foreach (Driver::paginate(5) as $index => $dr){
             if($items[$index]) $items[$index]['driver']=$dr;
             else $items[]['driver']=$dr;
         }

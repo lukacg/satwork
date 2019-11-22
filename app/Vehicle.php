@@ -21,6 +21,6 @@ class Vehicle extends Model
     }
 
     public function drivers(){
-        return $this->hasMany("App\Driver", 'driverId');
+        return $this->hasOne("App\Driver", 'driverId');
     }
 }
