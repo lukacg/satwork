@@ -47,12 +47,12 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(['type', 'model', 'production_year', 'license_plate', 'deviceId']);
+        $data = $request->only(['vehicle_type', 'model', 'production_year', 'license_plate', 'deviceId']);
 
         if (count($data) > 0) {
             $vehicle = new Vehicle();
 
-            $vehicle->type = $data['type'];
+            $vehicle->vehicle_type = $data['vehicle_type'];
             $vehicle->model = $data['model'];
             $vehicle->production_year = $data['production_year'];
             $vehicle->license_plate = $data['license_plate'];
@@ -99,10 +99,10 @@ class VehicleController extends Controller
      */
     public function update($id, Request $request)
     {
-        $data = $request->only(['type', 'model', 'production_year', 'licence_plate', 'deviceId']);
+        $data = $request->only(['vehicle_type', 'model', 'production_year', 'licence_plate', 'deviceId']);
 
         $vehicle = Vehicle::where('id', $id)->first();
-        $vehicle->type = $data['type'];
+        $vehicle->vehicle_type = $data['vehicle_type'];
         $vehicle->model = $data['model'];
         $vehicle->production_year = $data['production_year'];
         $vehicle->license_plate = $data['license_plate'];

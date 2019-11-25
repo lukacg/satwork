@@ -21,14 +21,14 @@
                     <div class="container">
 
                         <br><br>
-                        <a href="/vehicles"><button type="button" class="btn btn-secondary btn-lg btn-block">Povratak nazad</button></a>
+                        <a href="/vehicles"><button type="button" class="btn btn-secondary btn-lg btn-block">Back</button></a>
 
                         <form id="contact" action="{{route('createvehicle')}}" method="POST" enctype="multipart/form-data">
                         {{csrf_field()}}
            
                         <h3>Create new vehicle</h3>
                         <fieldset>Type:
-                            <input placeholder="Type" type="text" name="type" tabindex="1">
+                            <input placeholder="Type" type="text" name="vehicle_type" tabindex="1">
                         </fieldset>
                         <fieldset>Model:
                             <input placeholder="Model" type="text" name="model" tabindex="2">
@@ -42,7 +42,7 @@
                         <fieldset>Device:
                         <select name="deviceId">
                         @foreach ($devices as $device)
-                            <option value="{{$device->id}}">{{$device->type}}</option>
+                            <option value="{{$device->id}}">{{$device->device_type}}</option>
                         @endforeach
                         </select>
                         </fieldset>

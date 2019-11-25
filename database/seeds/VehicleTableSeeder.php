@@ -13,7 +13,7 @@ class VehicleTableSeeder extends Seeder
     {
         DB::table('vehicles')->insert([
             'id' => 1,
-            'type' => 'Mercedes',
+            'vehicle_type' => 'Mercedes',
             'model' => 'CLK350',
             'production_year' => '2005',
             'license_plate' => '001-A-001',
@@ -22,7 +22,7 @@ class VehicleTableSeeder extends Seeder
 
         DB::table('vehicles')->insert([
             'id' => 2,
-            'type' => 'BMW',
+            'vehicle_type' => 'BMW',
             'model' => '750i',
             'production_year' => '2002',
             'license_plate' => '750-M750',
@@ -31,7 +31,7 @@ class VehicleTableSeeder extends Seeder
 
         DB::table('vehicles')->insert([
             'id' => 3,
-            'type' => 'Volvo',
+            'vehicle_type' => 'Volvo',
             'model' => 'FHM20',
             'production_year' => '2015',
             'license_plate' => 'A01A999',

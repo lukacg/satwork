@@ -23,7 +23,7 @@ New driver
            
                         <h3>Create new driver</h3>
                         <fieldset>Name:
-                            <input placeholder="Name" type="text" name="name" tabindex="1">
+                            <input placeholder="Name" type="text" name="driver_name" tabindex="1">
                         </fieldset>
                         <fieldset>Phone number:
                             <input placeholder="Phone number" type="text" name="phone_number" tabindex="2">

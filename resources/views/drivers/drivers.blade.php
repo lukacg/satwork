@@ -28,7 +28,7 @@ Drivers
             <tbody>
                 @foreach($drivers as $driver)
                 <tr>
-                    <td>{{$driver->name}}</td>
+                    <td>{{$driver->driver_name}}</td>
                     <td>{{$driver->phone_number}}</td>
                     <td>{{$driver->vehicle->license_plate}}</a>
 

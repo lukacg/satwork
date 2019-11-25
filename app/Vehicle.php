@@ -11,7 +11,7 @@ class Vehicle extends Model
     protected $table = 'vehicles';
 
     protected $fillable = [
-        'id', 'type', 'model', 'production_year', 'license_plate', 'deviceId'
+        'id', 'vehicle_type', 'model', 'production_year', 'license_plate', 'deviceId'
     ];
 
     public $sortable = ['name'];

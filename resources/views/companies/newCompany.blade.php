@@ -23,7 +23,7 @@ New company
            
                         <h3>Create new company</h3>
                         <fieldset>
-                            <input placeholder="Name" type="text" name="name" tabindex="1">
+                            <input placeholder="Name" type="text" name="company_name" tabindex="1">
                         </fieldset>
                         <fieldset>
                             <input placeholder="Adress" type="text" name="adress" tabindex="2">

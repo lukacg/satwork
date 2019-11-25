@@ -31,11 +31,11 @@ Devices
             <tbody>
                 @foreach($devices as $device)
                 <tr>
-                    <td>{{$device->type}}</td>
+                    <td>{{$device->device_type}}</td>
                     <td>{{$device->purchase_date}}</td>
                     <td>{{$device->activation_date}}</td>
                     <td>{{$device->deactivation_date}}</td>
-                    <td>{{$device->company->name}}</a>
+                    <td>{{$device->company->company_name}}</a>
 
                     <td>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>

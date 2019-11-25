@@ -17,7 +17,7 @@ class CreateVehiclesTable extends Migration
 
         Schema::create('vehicles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('type', 10)->nullable();
+            $table->string('vehicle_type', 10)->nullable();
             $table->string('model', 15)->nullable();
             $table->year('production_year')->nullable();
             $table->string('license_plate', 10)->nullable();

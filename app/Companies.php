@@ -12,7 +12,7 @@ class Companies extends Model
     protected $table = "companies";
 
     protected $fillable = [
-        'id', 'name', 'adress', 'contact_person', 'phone_number'
+        'id', 'company_name', 'adress', 'contact_person', 'phone_number'
     ];
 
     public $sortable = ['name'];

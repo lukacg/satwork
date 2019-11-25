@@ -10,7 +10,7 @@ class Driver extends Model
     protected $table= "drivers";
 
     protected $fillable = [
-        'id', 'name', 'phone_number', 'vehicleId'
+        'id', 'driver_name', 'phone_number', 'vehicleId'
     ];
 
     public $sortable = ['name'];

@@ -23,7 +23,7 @@ New device
            
                         <h3>Create new device</h3>
                         <fieldset>Type:
-                            <input placeholder="Type" type="text" name="type" tabindex="1">
+                            <input placeholder="Type" type="text" name="device_type" tabindex="1">
                         </fieldset>
                         <fieldset>Purchase date:
                             <input placeholder="Purchase date" type="date" name="purchase_date" tabindex="2">
@@ -37,7 +37,7 @@ New device
                         <fieldset>Company:
                         <select name="companyId">
                         @foreach ($companies as $company)
-                            <option value="{{$company->id}}">{{$company->name}}</option>
+                            <option value="{{$company->id}}">{{$company->company_name}}</option>
                         @endforeach
                         </select>
                         </fieldset>

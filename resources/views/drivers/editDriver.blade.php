@@ -21,7 +21,7 @@ Edit driver
                         {{csrf_field()}}
            
                         <h3>Edit company</h3>
-                        Name:<br><input placeholder="Name"  type="text" name ="name" value="{{$driver->name}}" tabindex="1"  autofocus>
+                        Name:<br><input placeholder="Name"  type="text" name ="name" value="{{$driver->driver_name}}" tabindex="1"  autofocus>
                         </fieldset>
                         <fieldset>
                         Phone nymber:<br><input placeholder="Phone number" type="text" name ="phone_number" value="{{$driver->adress}}" tabindex="2" >

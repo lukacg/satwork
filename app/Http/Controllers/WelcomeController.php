@@ -7,28 +7,59 @@ use App\Companies;
 use App\Device;
 use App\Vehicle;
 use App\Driver;
+use DB;
 
 
 class WelcomeController extends Controller
 {
     public function index(Request $request)
     {
+        $satwork = DB::table('companies')
+                    ->leftJoin('devices', 'companies.id', '=', 'devices.companyId')
+                    ->leftJoin('vehicles', 'devices.id', '=', 'vehicles.deviceId')
+                    ->leftJoin('drivers', 'vehicles.id', '=', 'drivers.vehicleId')
+                    ->select('companies.company_name', 'devices.device_type', 'vehicles.license_plate', 'drivers.driver_name')
+                    ->paginate(5);
+
+                    if ($request->ajax) {
+                        return view('/pagination', compact('satwork'));}
+
+                    return view('/welcome', compact('satwork'));
+
+    }
+
+
+}
+    /*
+
+    public function index(Request $request)
+    {
+        $satwork = DB::table('drivers')
+                    ->join('vehicles', 'vehicles.id', '=', 'drivers.vehicleId')
+                    ->join('devices', 'devices.id', '=', 'vehicles.deviceId')
+                    ->join('companies', 'companies.id', '=', 'devices.companyId')
+                    ->select('companies.company_name', 'devices.device_type', 'vehicles.license_plate', 'drivers.driver_name')
+                    ->paginate(10);
+        return view('/welcome', compact('satwork'));
+
+    }
+
+
+    {
       
-
-
         $items = [];
-        foreach (Companies::paginate(5) as $comp) $items[]['company']=$comp;
-        foreach (Device::paginate(5) as $index => $dev){
+        foreach (Companies::paginate(10) as $comp) $items[]['company']=$comp;
+        foreach (Device::paginate(10) as $index => $dev){
             if($items[$index]) $items[$index]['device']=$dev;
             else $items[]['device']=$dev;
         }
 
-        foreach (Vehicle::paginate(5) as $index => $veh){
+        foreach (Vehicle::paginate(10) as $index => $veh){
             if($items[$index]) $items[$index]['vehicle']=$veh;
-            else $items[]['vehicle']=$veh;
+            else $items[]['vehicle']=$veh;   
         }
 
-        foreach (Driver::paginate(5) as $index => $dr){
+        foreach (Driver::paginate(10) as $index => $dr){
             if($items[$index]) $items[$index]['driver']=$dr;
             else $items[]['driver']=$dr;
         }
@@ -37,7 +68,7 @@ class WelcomeController extends Controller
 
         return view('/welcome', ['items'=>$items]);
     }
-
+    */
 
 
     /*
@@ -71,4 +102,3 @@ class WelcomeController extends Controller
     }
 
   */
-}

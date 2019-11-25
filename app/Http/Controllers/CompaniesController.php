@@ -37,11 +37,11 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(['name', 'adress', 'contact_person', 'phone_number']);
+        $data = $request->only(['company_name', 'adress', 'contact_person', 'phone_number']);
 
         if (count($data) > 0) {
             $company = new Companies();
-            $company->name = $data['name'];
+            $company->company_name = $data['company_name'];
             $company->adress = $data['adress'];
             $company->contact_person = $data['contact_person'];
             $company->phone_number = $data['phone_number'];
@@ -85,10 +85,10 @@ class CompaniesController extends Controller
      */
     public function update($id, Request $request)
     {
-        $data = $request->only(['name', 'adress', 'contact_person', 'phone_number']);
+        $data = $request->only(['company_name', 'adress', 'contact_person', 'phone_number']);
 
         $company = Companies::where('id', $id)->first();
-        $company->name = $data['name'];
+        $company->company_name = $data['company_name'];
         $company->adress = $data['adress'];
         $company->contact_person = $data['contact_person'];
         $company->phone_number = $data['phone_number'];

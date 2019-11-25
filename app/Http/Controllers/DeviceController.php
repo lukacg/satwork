@@ -48,12 +48,12 @@ class DeviceController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(['type', 'purchase_date', 'activation_date', 'deactivation_date', 'companyId']);
+        $data = $request->only(['device_type', 'purchase_date', 'activation_date', 'deactivation_date', 'companyId']);
 
         if (count($data) > 0) {
             $device = new Device();
 
-            $device->type = $data['type'];
+            $device->device_type = $data['device_type'];
             $device->purchase_date = $data['purchase_date'];
             $device->activation_date = $data['activation_date'];
             $device->deactivation_date = $data['deactivation_date'];
@@ -99,10 +99,10 @@ class DeviceController extends Controller
      */
     public function update($id, Request $request)
     {
-        $data = $request->only(['type', 'purchase_date', 'activation_date', 'deactivation_date', 'companyId']);
+        $data = $request->only(['device_type', 'purchase_date', 'activation_date', 'deactivation_date', 'companyId']);
 
         $device = Device::where('id', $id)->first();
-        $device->type = $data['type'];
+        $device->device_type = $data['device_type'];
         $device->purchase_date = $data['purchase_date'];
         $device->activation_date = $data['activation_date'];
         $device->deactivation_date = $data['deactivation_date'];

@@ -30,7 +30,7 @@ Companies
             <tbody>
                 @foreach($companies as $company)
                 <tr>
-                    <td>{{$company->name}}</td>
+                    <td>{{$company->company_name}}</td>
                     <td>{{$company->adress}}</td>
                     <td>{{$company->contact_person}}</td>
                     <td>{{$company->phone_number}}</td>

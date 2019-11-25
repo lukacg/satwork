@@ -12,10 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/');
 });
 
 Route::get('/', 'WelcomeController@index');
+Route::get('pagination', 'WelcomeController@fetch_data')->name('ajax.pagination');
+
 
 //Companies
 Route::get('/companies', 'CompaniesController@index');

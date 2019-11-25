@@ -11,7 +11,7 @@ class Device extends Model
     protected $table = "devices";
 
     protected $fillable = [
-        'id', 'type', 'purchase_date', 'activation_date', 'deactivation_date', 'companyId'
+        'id', 'device_type', 'purchase_date', 'activation_date', 'deactivation_date', 'companyId'
     ];
 
     public $sortable = ['type'];

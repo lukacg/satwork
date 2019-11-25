@@ -15,6 +15,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -75,9 +77,8 @@
         .containter {
             padding-bottom: 60px;
         }
-       
     </style>
-    
+
 </head>
 
 <body>
@@ -136,34 +137,51 @@
 
         <br><br>
 
-        <div class="container">
-            <table id="myTable" class="table table-bordered sortable">
-                <thead>
-                    <tr>
-                        <th onclick="sortTable(0)">Companies</th>
-                        <th onclick="sortTable(1)">Devices</th>
-                        <th onclick="sortTable(2)">Vehicles</th>
-                        <th onclick="sortTable(3)">Drivers</th>
-                    </tr>
-                </thead>
+        @include('pagination')
 
-                <tbody>
-
-                    @foreach($items as $company)
-                    <tr>
-                        <td>{{isset($company['company'])?$company['company']->name:''}}</td>
-                        <td>{{isset($company['device'])?$company['device']->type:''}}</td>
-                        <td>{{isset($company['vehicle'])?$company['vehicle']->type:''}}</td>
-                        <td>{{isset($company['driver'])?$company['driver']->name:''}}</td>
-
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            
-          
-        </div>
     </div>
+
+    <!-- Ajax pagination -->
+    <script type="text/javascript">
+        $(window).on('hashchange', function() {
+            if (window.location.hash) {
+                var page = window.location.hash.replace('#', '');
+                if (page == Number.NaN || page <= 0) {
+                    return false;
+                } else {
+                    getEvent(page);
+                }
+            }
+        });
+
+        $(document).ready(function() {
+            $(document).on('click', '.pagination a', function(event) {
+                $('li').removeClass('active');
+                $(this).parent('li').addClass('active');
+                event.preventDefault();
+
+                var myurl = $(this).attr('href');
+                var page = $(this).attr('href').split('page=')[1];
+
+                getEvent(page);
+            });
+        });
+
+        function getEvent(page) {
+            $.ajax({
+                    url: '?page=' + page,
+                    type: "get",
+                    datatype: "html",
+                })
+                .done(function(data) {
+                    $("#item-events").empty().html(data);
+                    location.hash = page;
+                })
+                .fail(function(jqXHR, ajaxOptions, thrownError) {
+                    alert('Lo sentimos, ocurrió un error.');
+                });
+        }
+    </script>
 
     <!-- OSM Map -->
     <script>

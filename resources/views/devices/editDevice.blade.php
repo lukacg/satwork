@@ -26,7 +26,7 @@
                         {{csrf_field()}}
            
                         <h3>Edit device</h3>
-                        Type:<br><input placeholder="Type"  type="text" name ="type" value="{{$device->type}}" tabindex="1"  autofocus>
+                        Type:<br><input placeholder="Type"  type="text" name ="device_type" value="{{$device->device_type}}" tabindex="1"  autofocus>
                         </fieldset>
                         <fieldset>
                         Purchase date:<br><input placeholder="Purchase date" type="date" name="purchase_date" value="{{$device->purchase_date}}" tabindex="2" >
@@ -42,7 +42,7 @@
                         <span>Company</span>
                         <select name="companyId">
                         @foreach($companies as $com)
-                            <option value="{{$com->id}}" @if ($com->id == $device->companyId) selected @endif>{{$com->name}}</option>
+                            <option value="{{$com->id}}" @if ($com->id == $device->companyId) selected @endif>{{$com->company_name}}</option>
                         @endforeach
                         </select>
                         </fieldset>

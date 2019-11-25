@@ -42,12 +42,12 @@ class DriverController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(['name', 'phone_number', 'vehicleId']);
+        $data = $request->only(['driver_name', 'phone_number', 'vehicleId']);
 
         if (count($data) > 0) {
             $driver = new Driver();
 
-            $driver->name = $data['name'];
+            $driver->driver_name = $data['driver_name'];
             $driver->phone_number = $data['phone_number'];
             $driver->vehicleId = $data['vehicleId'];
 
@@ -92,10 +92,10 @@ class DriverController extends Controller
      */
     public function update($id, Request $request)
     {
-        $data = $request->only(['name', 'phone_number', 'vehicleId']);
+        $data = $request->only(['driver_name', 'phone_number', 'vehicleId']);
 
         $driver = Driver::where('id', $id)->first;
-        $driver->name = $data['name'];
+        $driver->driver_name = $data['driver_name'];
         $driver->phone_number = $data['phone_number'];
         $driver->vehicleId = $data['vehicleId'];
 

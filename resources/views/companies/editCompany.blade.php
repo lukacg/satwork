@@ -21,7 +21,7 @@ edit company
                         {{csrf_field()}}
            
                         <h3>Edit company</h3>
-                        Name:<br><input placeholder="Name"  type="text" name ="name" value="{{$company->name}}" tabindex="1"  autofocus>
+                        Name:<br><input placeholder="Name"  type="text" name ="name" value="{{$company->company_name}}" tabindex="1"  autofocus>
                         </fieldset>
                         <fieldset>
                         Address:<br><input placeholder="Address" type="text" name ="adress" value="{{$company->adress}}" tabindex="2" >

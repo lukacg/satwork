@@ -31,11 +31,11 @@ Vehicles
             <tbody>
                 @foreach($vehicles as $vehicle)
                 <tr>
-                    <td>{{$vehicle->type}}</td>
+                    <td>{{$vehicle->vehicle_type}}</td>
                     <td>{{$vehicle->model}}</td>
                     <td>{{$vehicle->production_year}}</td>
                     <td>{{$vehicle->license_plate}}</td>
-                    <td>{{$vehicle->device->type}}</a>
+                    <td>{{$vehicle->device->device_type}}</a>
 
                     <td>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
