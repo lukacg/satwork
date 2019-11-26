@@ -1,4 +1,3 @@
-<div class="container">
     <table id="myTable" class="table table-bordered sortable">
         <thead>
             <tr>
@@ -19,8 +18,7 @@
             </tr>
             @endforeach
         </tbody>
-        {!! $satwork->render() !!}
+        {!! $satwork->links() !!}
     </table>
 
 
-</div>

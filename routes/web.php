@@ -16,8 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/', 'WelcomeController@index');
-Route::get('pagination', 'WelcomeController@fetch_data')->name('ajax.pagination');
-
+Route::get('/welcome/pagination', 'WelcomeController@fetch_data');
 
 //Companies
 Route::get('/companies', 'CompaniesController@index');

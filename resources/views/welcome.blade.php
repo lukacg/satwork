@@ -137,50 +137,34 @@
 
         <br><br>
 
-        @include('pagination')
+        <div class="container">
+            <div id="table_data">
+                @include('pagination')
+            </div>
+        </div>
 
     </div>
 
-    <!-- Ajax pagination -->
-    <script type="text/javascript">
-        $(window).on('hashchange', function() {
-            if (window.location.hash) {
-                var page = window.location.hash.replace('#', '');
-                if (page == Number.NaN || page <= 0) {
-                    return false;
-                } else {
-                    getEvent(page);
-                }
-            }
-        });
-
+    <!-- pagination -->
+    <script>
         $(document).ready(function() {
+
             $(document).on('click', '.pagination a', function(event) {
-                $('li').removeClass('active');
-                $(this).parent('li').addClass('active');
                 event.preventDefault();
-
-                var myurl = $(this).attr('href');
                 var page = $(this).attr('href').split('page=')[1];
-
-                getEvent(page);
+                fetch_data(page);
             });
-        });
 
-        function getEvent(page) {
-            $.ajax({
-                    url: '?page=' + page,
-                    type: "get",
-                    datatype: "html",
-                })
-                .done(function(data) {
-                    $("#item-events").empty().html(data);
-                    location.hash = page;
-                })
-                .fail(function(jqXHR, ajaxOptions, thrownError) {
-                    alert('Lo sentimos, ocurrió un error.');
+            function fetch_data(page) {
+                $.ajax({
+                    url: "/welcome/pagination?page=" + page,
+                    success: function(satwork) {
+                        $('#table_data').html(satwork);
+                    }
                 });
-        }
+            }
+
+        });
     </script>
 
     <!-- OSM Map -->
