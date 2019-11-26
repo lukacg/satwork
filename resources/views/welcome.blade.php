@@ -169,7 +169,7 @@
     <script>
         $(document).ready(function() {
             $('#companies').DataTable({
-               
+
             });
         });
     </script>
@@ -192,12 +192,39 @@
 
         // Target's GPS coordinates.
         var target = L.latLng('44.765611', '17.207313');
+        L.marker(target).addTo(map);
 
         // Set map's center to target with zoom 14.
         map.setView(target, 14);
 
-        // Place a marker on the same location.
-        L.marker(target).addTo(map);
+        //Set custom circle on map
+        L.circle([44.769039, 17.213705], {
+            radius: 211
+        }).addTo(map);
+
+        //Custom pins on map
+        var myIcon = L.icon({
+            iconUrl: "icons/letter_a.png",
+            iconSize: [10, 10],
+
+        });
+        L.marker([44.769039, 17.213705], {
+            icon: myIcon
+        }).addTo(map);
+
+        //Rectangle
+        // define rectangle geographical bounds
+        var bounds = [
+            [44.768284, 17.199689],
+            [44.772839, 17.207458]
+        ];
+        // create an orange rectangle
+        L.rectangle(bounds, {
+            color: "#ff7800",
+            weight: 1
+        }).addTo(map);
+        // zoom the map to the rectangle bounds
+        map.fitBounds(bounds);
     </script>
 
     <!-- Navi Dropdown -->
