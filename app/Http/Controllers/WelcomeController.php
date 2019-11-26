@@ -19,25 +19,10 @@ class WelcomeController extends Controller
                     ->leftJoin('vehicles', 'devices.id', '=', 'vehicles.deviceId')
                     ->leftJoin('drivers', 'vehicles.id', '=', 'drivers.vehicleId')
                     ->select('companies.company_name', 'devices.device_type', 'vehicles.license_plate', 'drivers.driver_name')
-                    ->paginate(5);
+                    ->get();
 
                     return view('/welcome', compact('satwork'));
 
-    }
-
-    public function fetch_data(Request $request)
-    {
-        if ($request->ajax()) 
-        {
-            $satwork = DB::table('companies')
-                    ->leftJoin('devices', 'companies.id', '=', 'devices.companyId')
-                    ->leftJoin('vehicles', 'devices.id', '=', 'vehicles.deviceId')
-                    ->leftJoin('drivers', 'vehicles.id', '=', 'drivers.vehicleId')
-                    ->select('companies.company_name', 'devices.device_type', 'vehicles.license_plate', 'drivers.driver_name')
-                    ->paginate(5);
-
-            return view('pagination', compact('satwork'))->render();
-        }
     }
 
 

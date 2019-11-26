@@ -16,9 +16,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <style>
@@ -74,7 +77,7 @@
             margin-bottom: 30px;
         }
 
-        .containter {
+        .content {
             padding-bottom: 60px;
         }
     </style>
@@ -137,33 +140,37 @@
 
         <br><br>
 
-        <div class="container">
-            <div id="table_data">
-                @include('pagination')
-            </div>
-        </div>
+
+        <table id="companies" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Companies</th>
+                    <th>Devices</th>
+                    <th>Vehicles</th>
+                    <th>Drivers</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach ($satwork as $row)
+                <tr>
+                    <td>{{ $row -> company_name}}</td>
+                    <td>{{ $row -> device_type}}</td>
+                    <td>{{ $row -> license_plate}}</td>
+                    <td>{{ $row -> driver_name}}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
 
     </div>
 
     <!-- pagination -->
     <script>
         $(document).ready(function() {
-
-            $(document).on('click', '.pagination a', function(event) {
-                event.preventDefault();
-                var page = $(this).attr('href').split('page=')[1];
-                fetch_data(page);
+            $('#companies').DataTable({
+               
             });
-
-            function fetch_data(page) {
-                $.ajax({
-                    url: "/welcome/pagination?page=" + page,
-                    success: function(satwork) {
-                        $('#table_data').html(satwork);
-                    }
-                });
-            }
-
         });
     </script>
 
@@ -191,64 +198,6 @@
 
         // Place a marker on the same location.
         L.marker(target).addTo(map);
-    </script>
-
-    <!-- Table sorting -->
-    <script>
-        function sortTable(n) {
-            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-            table = document.getElementById("myTable");
-            switching = true;
-            //Set the sorting direction to ascending:
-            dir = "asc";
-            /*Make a loop that will continue until
-            no switching has been done:*/
-            while (switching) {
-                //start by saying: no switching is done:
-                switching = false;
-                rows = table.rows;
-                /*Loop through all table rows (except the
-                first, which contains table headers):*/
-                for (i = 1; i < (rows.length - 1); i++) {
-                    //start by saying there should be no switching:
-                    shouldSwitch = false;
-                    /*Get the two elements you want to compare,
-                    one from current row and one from the next:*/
-                    x = rows[i].getElementsByTagName("TD")[n];
-                    y = rows[i + 1].getElementsByTagName("TD")[n];
-                    /*check if the two rows should switch place,
-                    based on the direction, asc or desc:*/
-                    if (dir == "asc") {
-                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                            //if so, mark as a switch and break the loop:
-                            shouldSwitch = true;
-                            break;
-                        }
-                    } else if (dir == "desc") {
-                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                            //if so, mark as a switch and break the loop:
-                            shouldSwitch = true;
-                            break;
-                        }
-                    }
-                }
-                if (shouldSwitch) {
-                    /*If a switch has been marked, make the switch
-                    and mark that a switch has been done:*/
-                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                    switching = true;
-                    //Each time a switch is done, increase this count by 1:
-                    switchcount++;
-                } else {
-                    /*If no switching has been done AND the direction is "asc",
-                    set the direction to "desc" and run the while loop again.*/
-                    if (switchcount == 0 && dir == "asc") {
-                        dir = "desc";
-                        switching = true;
-                    }
-                }
-            }
-        }
     </script>
 
     <!-- Navi Dropdown -->
