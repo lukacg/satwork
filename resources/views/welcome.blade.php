@@ -169,10 +169,11 @@
     <script>
         $(document).ready(function() {
             $('#companies').DataTable({
-
+             "lengthMenu": [[2, 3, 5, 10, 20, -1], [2, 3, 5, 10, 20, "All"]]
             });
         });
     </script>
+   
 
     <!-- OSM Map -->
     <script>
@@ -202,29 +203,87 @@
             radius: 211
         }).addTo(map);
 
-        //Custom pins on map
-        var myIcon = L.icon({
-            iconUrl: "icons/letter_a.png",
-            iconSize: [10, 10],
 
+        //Custom pins on map
+        var letter_a = L.icon({
+            iconUrl: "icons/letter_a.png",
+            iconSize: [30, 30],
         });
-        L.marker([44.769039, 17.213705], {
-            icon: myIcon
+        L.marker([44.772142, 17.208980], {
+            icon: letter_a
+        }).addTo(map);
+
+        var letter_b = L.icon({
+            iconUrl: "icons/letter_b.png",
+            iconSize: [30, 30],
+        });
+        L.marker([44.774753, 17.207644], {
+            icon: letter_b
+        }).addTo(map);
+
+        var letter_c = L.icon({
+            iconUrl: "icons/letter_c.png",
+            iconSize: [30, 30],
+        });
+        L.marker([44.773964, 17.199587], {
+            icon: letter_c
+        }).addTo(map);
+
+        var letter_d = L.icon({
+            iconUrl: "icons/letter_d.png",
+            iconSize: [30, 30],
+        });
+        L.marker([44.770823, 17.199207], {
+            icon: letter_d
+        }).addTo(map);
+
+        var letter_e = L.icon({
+            iconUrl: "icons/letter_e.png",
+            iconSize: [30, 30],
+        });
+        L.marker([44.771399, 17.195699], {
+            icon: letter_e
         }).addTo(map);
 
         //Rectangle
         // define rectangle geographical bounds
-        var bounds = [
-            [44.768284, 17.199689],
-            [44.772839, 17.207458]
+        var pravougaonik = [
+            [44.772690, 17.209957],
+            [44.775133, 17.213574]
         ];
         // create an orange rectangle
-        L.rectangle(bounds, {
-            color: "#ff7800",
+        L.rectangle(pravougaonik, {
+            color: "#fc0303",
             weight: 1
         }).addTo(map);
-        // zoom the map to the rectangle bounds
-        map.fitBounds(bounds);
+        // zoom the map to the rectangle bounds - map.fitBounds(bounds);
+
+        //Polygon
+        // create a red polygon from an array of LatLng points
+        var poligon = [
+            [44.779853, 17.198883],
+            [44.782566, 17.201698],
+            [44.781092, 17.204578],
+            [44.778851, 17.202324],
+            [44.779061, 17.201523],
+            [44.778898, 17.201373]
+        ];
+        var polygon = L.polygon(poligon, {
+            color: 'brown'
+        }).addTo(map);
+        // zoom the map to the polygon - map.fitBounds(polygon.getBounds());
+
+        //Path 
+        var putanja_a_e = [
+            [44.772142, 17.208980],
+            [44.774753, 17.207644],
+            [44.773964, 17.199587],
+            [44.770823, 17.199207],
+            [44.771399, 17.195699],
+        ];
+        var polyline = L.polyline(putanja_a_e, {
+            color: 'red'
+        }).addTo(map);
     </script>
 
     <!-- Navi Dropdown -->
@@ -249,6 +308,8 @@
             }
         }
     </script>
+
+
 
 </body>
 
