@@ -15,7 +15,7 @@ Devices
 
     <br><br>
     <div class="table-responsive">
-        <table class="table blueTable">
+        <table id="tabela" class="table blueTable">
             <thead>
                 <tr>
                     <th>Type</th>
@@ -37,46 +37,23 @@ Devices
                     <td>{{$device->deactivation_date}}</td>
                     <td>{{$device->company->company_name}}</a>
 
-                    <td>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+                    <td><button><a href="editDevice/{{$device->id}}">Edit</button></a>
                     </td>
-
-
-
-                    <!-- <button><a href="editDevice/{{$device->id}}">Edit</button></a>  -->
+                    <!--   -->
 
                     <td><a onclick="return confirm('Are You sure?')" href="deleteDevice/{{$device->id}}"><button>Delete</button></a></td>
                 </tr>
                 @endforeach
 
+                <!--
                 <div>
                     {{ $devices->links() }}
-                </div>
+                </div> -->
 
             </tbody>
         </table>
     </div>
 
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Device edit</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    @include('devices.editDevice')
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
 
     @endsection

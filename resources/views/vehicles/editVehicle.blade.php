@@ -20,13 +20,13 @@
                 <div class="col-6">
                 <div class="container">
                     <br><br>
-                        <!-- <button type="button" class="btn btn-secondary btn-sm"><a href="/devices">Back</button></a> -->
+                        <button type="button" class="btn btn-secondary btn-sm"><a href="/vehicles">Back</button></a> 
 
                         <form id="contact" action="{{route('updatevehicle', $vehicle->id)}}" method="POST">
                         {{csrf_field()}}
            
                         <h3>Edit vehicle</h3>
-                        Type:<br><input placeholder="Type"  type="text" name ="type" value="{{$vehicle->vehicle_type}}" tabindex="1"  autofocus>
+                        Type:<br><input placeholder="Type"  type="text" name ="vehicle_type" value="{{$vehicle->vehicle_type}}" tabindex="1"  autofocus>
                         </fieldset>
                         <fieldset>
                         Model:<br><input placeholder="Model" type="text" name="model" value="{{$vehicle->model}}" tabindex="2" autofocus>
@@ -41,7 +41,7 @@
                         <fieldset>
                         <span>Device</span>
                         <select name="deviceId">
-                        @foreach($devices as $dev)
+                        @foreach($device as $dev)
                             <option value="{{$dev->id}}" @if ($dev->id == $vehicle->companyId) selected @endif>{{$dev->device_type}}</option>
                         @endforeach
                         </select>

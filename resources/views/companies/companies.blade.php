@@ -15,7 +15,7 @@ Companies
 
     <br><br>
     <div class="table-responsive">
-        <table class="table blueTable">
+        <table id="tabela" class="table blueTable">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -40,9 +40,10 @@ Companies
                 </tr>
                 @endforeach
 
+                <!--
                 <div>
                     {{ $companies->links() }}
-                </div>
+                </div> -->
 
             </tbody>
         </table>

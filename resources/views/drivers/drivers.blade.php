@@ -14,7 +14,7 @@ Drivers
 
     <br><br>
     <div class="table-responsive">
-        <table class="table blueTable">
+        <table id="tabela" class="table blueTable">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -37,9 +37,10 @@ Drivers
                 </tr>
                 @endforeach
 
+                <!--
                 <div>
                     {{ $drivers->links() }}
-                </div>
+                </div> -->
             </tbody>
         </table>
     </div>

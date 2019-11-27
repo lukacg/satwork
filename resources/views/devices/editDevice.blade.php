@@ -41,7 +41,7 @@
                         <fieldset>
                         <span>Company</span>
                         <select name="companyId">
-                        @foreach($companies as $com)
+                        @foreach($company as $com)
                             <option value="{{$com->id}}" @if ($com->id == $device->companyId) selected @endif>{{$com->company_name}}</option>
                         @endforeach
                         </select>

@@ -8,6 +8,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
     <link rel="stylesheet"  href="{{ asset('css/style.css') }}">
     <title>@yield("title")</title>
     
@@ -31,5 +33,14 @@
 </div>
 </body>
 
+<!-- Pagination -->
+<script>
+        $(document).ready(function() {
+            $('#tabela').DataTable({
+             "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]
+            });
+        });
+    </script>
 
 </html>
+

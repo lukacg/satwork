@@ -23,7 +23,7 @@ class VehicleController extends Controller
             $vehicle->where('deviceId', $request->input('deviceId'));
         }
 
-        return view('/vehicles.vehicles', ['vehicles' => $vehicle->paginate(5), 'devices' => Device::all()]);
+        return view('/vehicles.vehicles', ['vehicles' => $vehicle->paginate(0), 'devices' => Device::all()]);
 
 
         //   return view('/vehicles.vehicles', ['vehicles' => Vehicle::all()]);
@@ -87,7 +87,7 @@ class VehicleController extends Controller
     {
         $vehicle = Vehicle::where('id', $id)->first();
         $device = Device::all();
-        return view('/vehicles.editVehicle', compact('vehicles', 'devices'));
+        return view('/vehicles.editVehicle', compact('vehicle', 'device'));
     }
 
     /**
@@ -99,7 +99,7 @@ class VehicleController extends Controller
      */
     public function update($id, Request $request)
     {
-        $data = $request->only(['vehicle_type', 'model', 'production_year', 'licence_plate', 'deviceId']);
+        $data = $request->only(['vehicle_type', 'model', 'production_year', 'license_plate', 'deviceId']);
 
         $vehicle = Vehicle::where('id', $id)->first();
         $vehicle->vehicle_type = $data['vehicle_type'];
