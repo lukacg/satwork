@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <title>Edit device</title>
-</head>
-<body>
+@extends("../layouts.master")
+
+@section("content")
+
+@section("title")
+edit company 
+@endsection
 
     <div class="containter">
         <div class="row">
@@ -20,7 +15,7 @@
                 <div class="col-6">
                 <div class="container">
                     <br><br>
-                        <!-- <button type="button" class="btn btn-secondary btn-sm"><a href="/devices">Back</button></a> -->
+                        <button type="button"><a href="/devices">Back</button></a>
 
                         <form id="contact" action="{{route('updatedevice', $device->id)}}" method="POST">
                         {{csrf_field()}}
@@ -41,7 +36,7 @@
                         <fieldset>
                         <span>Company</span>
                         <select name="companyId">
-                        @foreach($company as $com)
+                        @foreach($companies as $com)
                             <option value="{{$com->id}}" @if ($com->id == $device->companyId) selected @endif>{{$com->company_name}}</option>
                         @endforeach
                         </select>
@@ -58,5 +53,5 @@
                 </div>
         </div>
     </div>
-</body>
-</html>
+
+    @endsection

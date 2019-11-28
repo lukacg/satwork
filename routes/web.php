@@ -52,6 +52,7 @@ Route::get('/deleteDriver/{id}', 'DriverController@destroy')->middleware('auth')
 Auth::routes();
 
 //Login
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'DashboardController@index');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

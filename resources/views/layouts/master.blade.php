@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -12,35 +13,37 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
     <link rel="stylesheet"  href="{{ asset('css/style.css') }}">
     <title>@yield("title")</title>
-    
 </head>
 <header>
 </header>
+
 <body>
 
-@include("layouts.navi")
+    @include("layouts.navi")
 
-<div class="container-fluid">
+    <div class="container-fluid">
 
 
-    @yield("content")
+        @yield("content")
 
-</div>
+    </div>
 
-<div class="footerMain text-center py-3">© 2019 Copyright:
+    <div class="footerMain text-center py-3">© 2019 Copyright:
         <a href="https://www.satwork.net/"> Satwork</a>
         <p>Contact information: <a href="mailto:info@satwork.net">info@satwork.net</a>.</p>
-</div>
+    </div>
 </body>
 
 <!-- Pagination -->
 <script>
-        $(document).ready(function() {
-            $('#tabela').DataTable({
-             "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]
-            });
+    $(document).ready(function() {
+        $('#tabela').DataTable({
+            "lengthMenu": [
+                [5, 10, 20, -1],
+                [5, 10, 20, "All"]
+            ]
         });
-    </script>
+    });
+</script>
 
 </html>
-

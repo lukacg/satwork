@@ -39,12 +39,6 @@ Companies
                     <td><a onclick="return confirm('Are You sure?')" href="deleteCompany/{{$company->id}}"><button>Delete</button></a></td>
                 </tr>
                 @endforeach
-
-                <!--
-                <div>
-                    {{ $companies->links() }}
-                </div> -->
-
             </tbody>
         </table>
     </div>

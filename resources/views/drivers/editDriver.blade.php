@@ -15,7 +15,7 @@ Edit driver
                 <div class="col-6">
                 <div class="container">
                     <br><br>
-                        <button type="button" class="btn btn-secondary btn-lg btn-block"><a href="/drivers">Back</button></a>
+                        <button type="button"><a href="/drivers">Back</button></a>
 
                         <form id="contact" action="{{route('updatedriver', $driver->id)}}" method="POST">
                         {{csrf_field()}}

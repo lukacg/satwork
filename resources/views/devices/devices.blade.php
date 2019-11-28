@@ -45,10 +45,6 @@ Devices
                 </tr>
                 @endforeach
 
-                <!--
-                <div>
-                    {{ $devices->links() }}
-                </div> -->
 
             </tbody>
         </table>

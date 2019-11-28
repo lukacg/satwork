@@ -15,7 +15,7 @@ edit company
                 <div class="col-6">
                 <div class="container">
                     <br><br>
-                        <button type="button" class="btn btn-secondary btn-lg btn-block"><a href="/companies">Back</button></a>
+                        <button type="button"><a href="/companies">Back</button></a>
 
                         <form id="contact" action="{{route('updatecompany', $company->id)}}" method="POST">
                         {{csrf_field()}}

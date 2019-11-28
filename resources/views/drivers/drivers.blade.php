@@ -36,14 +36,9 @@ Drivers
                     <td><a onclick="return confirm('Are You sure?')" href="deleteDriver/{{$driver->id}}"><button>Delete</button></a></td>
                 </tr>
                 @endforeach
-
-                <!--
-                <div>
-                    {{ $drivers->links() }}
-                </div> -->
             </tbody>
         </table>
     </div>
 
-
+</div>
     @endsection

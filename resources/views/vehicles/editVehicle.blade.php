@@ -20,7 +20,7 @@
                 <div class="col-6">
                 <div class="container">
                     <br><br>
-                        <button type="button" class="btn btn-secondary btn-sm"><a href="/vehicles">Back</button></a> 
+                        <button type="button"><a href="/vehicles">Back</button></a> 
 
                         <form id="contact" action="{{route('updatevehicle', $vehicle->id)}}" method="POST">
                         {{csrf_field()}}
@@ -41,7 +41,7 @@
                         <fieldset>
                         <span>Device</span>
                         <select name="deviceId">
-                        @foreach($device as $dev)
+                        @foreach($devices as $dev)
                             <option value="{{$dev->id}}" @if ($dev->id == $vehicle->companyId) selected @endif>{{$dev->device_type}}</option>
                         @endforeach
                         </select>
@@ -59,4 +59,5 @@
         </div>
     </div>
 </body>
+
 </html>
