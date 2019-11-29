@@ -20,6 +20,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+  
 
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -120,7 +121,7 @@
     <br><br>
 
 
-
+    <!--CONTENT-->
     <div class="content">
 
         <div class="title m-b-md">
@@ -169,11 +170,14 @@
     <script>
         $(document).ready(function() {
             $('#companies').DataTable({
-             "lengthMenu": [[2, 3, 5, 10, 20, -1], [2, 3, 5, 10, 20, "All"]]
+                "lengthMenu": [
+                    [5, 10, 20, -1],
+                    [5, 10, 20, "All"]
+                ]
             });
         });
     </script>
-   
+
 
     <!-- OSM Map -->
     <script>
@@ -196,54 +200,13 @@
         L.marker(target).addTo(map);
 
         // Set map's center to target with zoom 14.
-        map.setView(target, 14);
+        map.setView(target, 12);
 
         //Set custom circle on map
         L.circle([44.769039, 17.213705], {
             radius: 211
         }).addTo(map);
 
-
-        //Custom pins on map
-        var letter_a = L.icon({
-            iconUrl: "icons/letter_a.png",
-            iconSize: [30, 30],
-        });
-        L.marker([44.772142, 17.208980], {
-            icon: letter_a
-        }).addTo(map);
-
-        var letter_b = L.icon({
-            iconUrl: "icons/letter_b.png",
-            iconSize: [30, 30],
-        });
-        L.marker([44.774753, 17.207644], {
-            icon: letter_b
-        }).addTo(map);
-
-        var letter_c = L.icon({
-            iconUrl: "icons/letter_c.png",
-            iconSize: [30, 30],
-        });
-        L.marker([44.773964, 17.199587], {
-            icon: letter_c
-        }).addTo(map);
-
-        var letter_d = L.icon({
-            iconUrl: "icons/letter_d.png",
-            iconSize: [30, 30],
-        });
-        L.marker([44.770823, 17.199207], {
-            icon: letter_d
-        }).addTo(map);
-
-        var letter_e = L.icon({
-            iconUrl: "icons/letter_e.png",
-            iconSize: [30, 30],
-        });
-        L.marker([44.771399, 17.195699], {
-            icon: letter_e
-        }).addTo(map);
 
         //Rectangle
         // define rectangle geographical bounds
@@ -274,14 +237,21 @@
         // zoom the map to the polygon - map.fitBounds(polygon.getBounds());
 
         //Path 
-        var putanja_a_e = [
-            [44.772142, 17.208980],
-            [44.774753, 17.207644],
-            [44.773964, 17.199587],
-            [44.770823, 17.199207],
-            [44.771399, 17.195699],
+        var polyline1 = [
+            ['1', 44.772142, 17.208980],
+            ['2', 44.774753, 17.207644],
+            ['3', 44.773964, 17.199587],
+            ['4', 44.770823, 17.199207],
+            ['5', 44.771399, 17.195699],
         ];
-        var polyline = L.polyline(putanja_a_e, {
+
+
+        for (var i = 0; i < polyline1.length; i++) {
+            var marker = L.marker([polyline1[i][1], polyline1[i][2]])
+                .bindPopup(polyline1[i][0])
+                .addTo(map);
+        }
+        var polyline = L.polyline(polyline1, {
             color: 'red'
         }).addTo(map);
     </script>
