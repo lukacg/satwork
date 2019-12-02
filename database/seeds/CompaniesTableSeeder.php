@@ -42,5 +42,29 @@ class CompaniesTableSeeder extends Seeder
             'contact_person' => 'Neco Neco',
             'phone_number' => '065888888',
         ]);
+
+        DB::table('companies')->insert([
+            'id' => 5,
+            'company_name' => 'Poste RS',
+            'adress' => 'Kralja Petra I Karadjordjevica',
+            'contact_person' => 'Jasminka Krivokuca',
+            'phone_number' => '051246093',
+        ]);
+
+        DB::table('companies')->insert([
+            'id' => 6,
+            'company_name' => 'Euro Express',
+            'adress' => 'Jovana Ducica 23',
+            'contact_person' => 'Marinko Tomic',
+            'phone_number' => '051244300',
+        ]);
+
+        DB::table('companies')->insert([
+            'id' => 7,
+            'company_name' => 'Patrol Taxi',
+            'adress' => 'Veljka Mladjenovica',
+            'contact_person' => 'Veselko Malbasic',
+            'phone_number' => '051229500',
+        ]);
     }
 }

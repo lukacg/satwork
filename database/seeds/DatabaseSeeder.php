@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             DeviceTableSeeder::class,
             VehicleTableSeeder::class,
             DriverTableSeeder::class,
+            Device_newTableSeeder::class,
         ]);
     
     }

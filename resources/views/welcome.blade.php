@@ -141,8 +141,23 @@
             <a href="/vehicles">Vehicles</a>
             <a href="/drivers">Drivers</a>
         </div>
-
         <br><br>
+
+        <table id="device_new" class="table table-bordered">
+            <thead>
+                <button>Update</button>
+                <tr>
+                    <th>Device></th>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+
+                <td> Dev 1...</td>
+                <td> X ...</td>
+                <td> Y ...</td>
+                <td> Time ...</td>
 
 
         <table id="companies" class="table table-bordered">

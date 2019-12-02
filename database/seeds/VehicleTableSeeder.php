@@ -37,5 +37,14 @@ class VehicleTableSeeder extends Seeder
             'license_plate' => 'A01A999',
             'deviceId' => 3,
         ]);
+
+        DB::table('vehicles')->insert([
+            'id' => 4,
+            'vehicle_type' => 'Mercedes',
+            'model' => 'Actros',
+            'production_year' => '2015',
+            'license_plate' => '455M455',
+            'deviceId' => 4,
+        ]);
     }
 }
