@@ -62,6 +62,13 @@ var polyline1 = [
             color: 'red'
         }).addTo(map);
 
+/*
+         // Add a marker at each point
+        polyline1.forEach(function(LatLng, i) {
+            L.marker(LatLng, {icon: icons[i]})
+            .addTo(map);
 
+        });
+        */      
 
 </script>

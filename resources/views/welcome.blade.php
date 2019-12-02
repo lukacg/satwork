@@ -20,7 +20,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-  
+    <link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css" />
+    <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script>
+
+
 
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -185,7 +188,7 @@
         var element = document.getElementById('osm-map');
 
         // Height has to be set. You can do this in CSS too.
-        element.style = 'height:350px;', 'width:500px;';
+        element.style = 'height:410px;', 'width:500px;';
 
         // Create Leaflet map on map element.
         var map = L.map(element);
@@ -200,7 +203,7 @@
         L.marker(target).addTo(map);
 
         // Set map's center to target with zoom 14.
-        map.setView(target, 12);
+        map.setView(target, 14);
 
         //Set custom circle on map
         L.circle([44.769039, 17.213705], {
@@ -237,23 +240,53 @@
         // zoom the map to the polygon - map.fitBounds(polygon.getBounds());
 
         //Path 
+
+        var icon1 = L.icon({
+            iconUrl: "icons/letter_a.png",
+            iconSize: [30, 30],
+        });
+        var icon2 = L.icon({
+            iconUrl: "icons/letter_b.png",
+            iconSize: [30, 30],
+        });
+        var icon3 = L.icon({
+            iconUrl: "icons/letter_c.png",
+            iconSize: [30, 30],
+        });
+        var icon4 = L.icon({
+            iconUrl: "icons/letter_d.png",
+            iconSize: [30, 30],
+        });
+        var icon5 = L.icon({
+            iconUrl: "icons/letter_e.png",
+            iconSize: [30, 30],
+        });
+        var icons = [ icon1, icon2, icon3, icon4, icon5];
+
         var polyline1 = [
-            ['1', 44.772142, 17.208980],
-            ['2', 44.774753, 17.207644],
-            ['3', 44.773964, 17.199587],
-            ['4', 44.770823, 17.199207],
-            ['5', 44.771399, 17.195699],
+            [44.772142, 17.208980],
+            [44.774753, 17.207644],
+            [44.773964, 17.199587],
+            [44.770823, 17.199207],
+            [44.771399, 17.195699],
         ];
 
-
         for (var i = 0; i < polyline1.length; i++) {
-            var marker = L.marker([polyline1[i][1], polyline1[i][2]])
-                .bindPopup(polyline1[i][0])
+                var marker = L.marker([polyline1[i][0],polyline1[i][1]], {icon: icons[i]} )
+                .bindPopup("polyline1[i][0]")
                 .addTo(map);
-        }
+            }
+        
+        // Add a polyline
         var polyline = L.polyline(polyline1, {
-            color: 'red'
-        }).addTo(map);
+        color: 'red'
+        })
+        .addTo(map);
+
+        //Drawing controlls
+        map.pm.addControls({
+            position: 'topleft',
+        });
     </script>
 
     <!-- Navi Dropdown -->
