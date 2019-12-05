@@ -12,27 +12,35 @@ class Device_newTableSeeder extends Seeder
      */
     public function run()
     {
+        /*
         $faker = Faker::create('App\Device_new');
 
-        DB::table('device_new')->insert([
+        DB::table('device_news')->insert([
             'x' => $faker -> randomFloat($nbMaxDecimals = 6, $min = 44, $max = 45),
             'y' => $faker -> randomFloat($nbMaxDecimals = 6, $min = 17, $max = 18),
-            'time' => $faker->dateTime($min = 'yesterday', $max = 'now'),
+            'time' => $faker->dateTimeBetween($startDate = '-1 day', $endDate = 'now', $timezone = null),
             'deviceId' => 1,
         ]);
 
-        DB::table('device_new')->insert([
+        DB::table('device_news')->insert([
             'x' => $faker -> randomFloat($nbMaxDecimals = 6, $min = 44, $max = 45),
             'y' => $faker -> randomFloat($nbMaxDecimals = 6, $min = 17, $max = 18),
-            'time' => $faker->dateTime($min = 'yesterday', $max = 'now'),
+            'time' => $faker->dateTimeBetween($startDate = '-1 day', $endDate = 'now', $timezone = null),
             'deviceId' => 2,
         ]);
 
-        DB::table('device_new')->insert([
+        DB::table('device_news')->insert([
             'x' => $faker -> randomFloat($nbMaxDecimals = 6, $min = 44, $max = 45),
             'y' => $faker -> randomFloat($nbMaxDecimals = 6, $min = 17, $max = 18),
-            'time' => $faker->dateTime($min = 'yesterday', $max = 'now'),
+            'time' => $faker->dateTimeBetween($startDate = '-1 day', $endDate = 'now', $timezone = null),
             'deviceId' => 3,
         ]);
+
+        DB::table('device_news')->insert([
+            'x' => $faker -> randomFloat($nbMaxDecimals = 6, $min = 44, $max = 45),
+            'y' => $faker -> randomFloat($nbMaxDecimals = 6, $min = 17, $max = 18),
+            'time' => $faker->dateTimeBetween($startDate = '-1 day', $endDate = 'now', $timezone = null),
+            'deviceId' => 4,
+        ]);*/
     }
 }

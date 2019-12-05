@@ -16,10 +16,10 @@ class CreateDeviceNewsTable extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('device_news', function (Blueprint $table) {
-            $table->number('x', 10);
-            $table->number('y', 10);
-            $table->time('time');
-            $table->bigInteger('deviceId');
+            $table->float('x', 10)->nullable();
+            $table->float('y', 10)->nullable();
+            $table->time('time')->nullable();
+            $table->unsignedBigInteger('deviceId');
             $table->timestamps();
 
             $table->foreign('deviceId')->references('id')->on('devices');

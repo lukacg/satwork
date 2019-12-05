@@ -147,19 +147,22 @@
             <thead>
                 <button>Update</button>
                 <tr>
-                    <th>Device></th>
+                    <th>Device</th>
                     <th>X</th>
                     <th>Y</th>
                     <th>Time</th>
                 </tr>
             </thead>
-
-                <td> Dev 1...</td>
-                <td> X ...</td>
-                <td> Y ...</td>
-                <td> Time ...</td>
-
-
+            <tbody>
+            @foreach($device as $dev)
+                <tr>
+                    <td>{{$dev -> device_type}}</td>
+                    <td>{{$dev -> x}}</td>
+                    <td>{{$dev -> y }}</td>
+                    <td>{{$dev -> time}}</td>
+                </tr>
+            @endforeach
+            </tbody>
         <table id="companies" class="table table-bordered">
             <thead>
                 <tr>
@@ -169,9 +172,10 @@
                     <th>Drivers</th>
                 </tr>
             </thead>
-
+            </p>
             <tbody>
-                @foreach ($satwork as $row)
+            @foreach ($satwork as $row)
+
                 <tr>
                     <td>{{ $row -> company_name}}</td>
                     <td>{{ $row -> device_type}}</td>
@@ -188,6 +192,17 @@
     <script>
         $(document).ready(function() {
             $('#companies').DataTable({
+                "lengthMenu": [
+                    [5, 10, 20, -1],
+                    [5, 10, 20, "All"]
+                ]
+            });
+        });
+    </script>
+
+<script>
+        $(document).ready(function() {
+            $('#device_new').DataTable({
                 "lengthMenu": [
                     [5, 10, 20, -1],
                     [5, 10, 20, "All"]

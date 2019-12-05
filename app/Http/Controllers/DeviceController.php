@@ -26,8 +26,6 @@ class DeviceController extends Controller
 
         return view('/devices/devices', ['devices' => $device->paginate(), 'companies' => Companies::all()]);
 
-
-        //   return view('/devices.devices', ['devices' => Device::all()]);
     }
 
     /**

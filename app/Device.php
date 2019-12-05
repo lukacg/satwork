@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Companies;
 use App\Vehicle;
+use App\Device_new;
 
 class Device extends Model
 {
@@ -24,5 +25,8 @@ class Device extends Model
         return $this->hasOne("App\Vehicle", 'vehicleId');
     }
 
+    public function device_new(){
+        return $this->hasOne("App\DeviceNew", 'device_newId');
+    }
   
 }

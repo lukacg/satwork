@@ -34,6 +34,9 @@ Route::get('/editDevice/{id}', 'DeviceController@edit')->middleware('auth');
 Route::post('/editDevice/{id}', 'DeviceController@update')->name('updatedevice')->middleware('auth');
 Route::get('/deleteDevice/{id}', 'DeviceController@destroy')->middleware('auth');
 
+//Device_new
+Route::get('/devices_new', 'DeviceNewController@index');
+
 //Vehicles
 Route::get('/vehicles', 'VehicleController@index');
 Route::get('/newVehicle', 'VehicleController@store')->middleware('auth');

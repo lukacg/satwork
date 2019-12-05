@@ -17,11 +17,18 @@ class DeviceNewController extends Controller
     {
         $device_new = Device_new::with(['device']);
 
+        return view('/devices/devices_new', ['device_news' => $device_new->get(), 'devices' => Device::all()]);
+
+
+        /*
+        $device_new = Device_new::with(['device']);
+
         if ($request->has('deviceId')) {
             $device_new->where('deviceId', $request->input('deviceId'));
         }
         
         return view('/', ['device_news' => $device_new->get(), 'devices'=> Device::all()]);
+        */
     }
 
     /**
@@ -74,9 +81,17 @@ class DeviceNewController extends Controller
      * @param  \App\Device_new  $device_new
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Device_new $device_new)
+    public function update($id, Request $request)
     {
-        //
+        $data = $request->only(['x', 'y', 'time']);
+
+        $device_new = Device_new::where('deviceId', $id)->first();
+        $device_new->x = $data['x'];
+        $device_new->y = $data['y'];
+        $device_new->time = $data['time'];
+
+        $device_new->save();
+
     }
 
     /**
