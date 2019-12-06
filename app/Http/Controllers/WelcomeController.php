@@ -33,6 +33,18 @@ class WelcomeController extends Controller
 
     }
 
-    
+    public function update($deviceId, Request $request)
+    {
+        $data = $request->only(['x', 'y', 'time']);
+
+        $device = Device_new::where('deviceId', $deviceId)->first();
+        $device->x = $data['x'];
+        $device->y = $data['y'];
+        $device->time = $data['time'];
+
+        $device->save();
+
+        return redirect('/welcome');
+    }
 }
    

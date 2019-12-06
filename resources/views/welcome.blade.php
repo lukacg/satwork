@@ -126,7 +126,6 @@
 
     <!--CONTENT-->
     <div class="content">
-
         <div class="title m-b-md">
             <img src="img/LogoIndex.png" alt="Logo" class="responsive">
         </div>
@@ -218,7 +217,7 @@
         var element = document.getElementById('osm-map');
 
         // Height has to be set. You can do this in CSS too.
-        element.style = 'height:410px;', 'width:500px;';
+        element.style = 'height:400px;', 'width:500px;';
 
         // Create Leaflet map on map element.
         var map = L.map(element);
