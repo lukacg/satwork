@@ -144,7 +144,7 @@
 
         <table id="device_new" class="table table-bordered">
             <thead>
-                <button>Update</button>
+                <button id="updatebutton">Update</button>
                 <tr>
                     <th>Device</th>
                     <th>X</th>
@@ -162,6 +162,7 @@
                 </tr>
             @endforeach
             </tbody>
+        </table>
         <table id="companies" class="table table-bordered">
             <thead>
                 <tr>
@@ -199,7 +200,7 @@
         });
     </script>
 
-<script>
+    <script>
         $(document).ready(function() {
             $('#device_new').DataTable({
                 "lengthMenu": [
@@ -210,6 +211,19 @@
         });
     </script>
 
+    <!-- Update button -->
+
+    <script>
+        function submitUpdate(){
+            document.getElementById("updatebutton").disabled = true;
+            setTimeout(function() {
+            document.getElementById("updatebutton").disabled = false;
+            }, 10000);   
+        }
+
+        document.getElementById("updatebutton").addEventListener("click", submitUpdate);
+
+    </script>
 
     <!-- OSM Map -->
     <script>
@@ -217,7 +231,7 @@
         var element = document.getElementById('osm-map');
 
         // Height has to be set. You can do this in CSS too.
-        element.style = 'height:400px;', 'width:500px;';
+        element.style = 'height:405px;', 'width:500px;';
 
         // Create Leaflet map on map element.
         var map = L.map(element);
@@ -312,7 +326,20 @@
         })
         .addTo(map);
 
-        //Drawing controlls
+        //Koordinate iz baze
+        var koordinate = {!! json_encode($device->toArray()) !!};
+        console.log(koordinate);
+
+        for (var i=0; i < koordinate.length; i++) {
+            if(koordinate[i].x && koordinate[i].y){
+            var marker = L.marker([koordinate[i].x, koordinate[i].y])
+            .bindPopup("Device: "+koordinate[i].device_type+'<br>' + "Time: "+koordinate[i].time)
+
+            .addTo(map);
+            }
+        }
+
+        //Drawing controls
         map.pm.addControls({
             position: 'topleft',
         });
