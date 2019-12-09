@@ -88,7 +88,7 @@ class DeviceNewController extends Controller
         $device_new = Device_new::where('deviceId', $id)->first();
         $device_new->x = $data['x'];
         $device_new->y = $data['y'];
-        $device_new->time = $data['time'];
+        $device_new->datetime = $data['datetime'];
 
         $device_new->save();
 

@@ -18,7 +18,7 @@ class CreateDeviceNewsTable extends Migration
         Schema::create('device_news', function (Blueprint $table) {
             $table->float('x', 10,6)->nullable();
             $table->float('y', 10,6)->nullable();
-            $table->time('time')->nullable();
+            $table->dateTime('datetime')->nullable();
             $table->unsignedBigInteger('deviceId');
             $table->timestamps();
 

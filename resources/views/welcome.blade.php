@@ -142,32 +142,15 @@
         </div>
         <br><br>
 
-        <table id="device_new" class="table table-bordered">
-            <thead>
-                <button id="updatebutton">Update</button>
-                <tr>
-                    <th>Device</th>
-                    <th>X</th>
-                    <th>Y</th>
-                    <th>Time</th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach($device as $dev)
-                <tr>
-                    <td>{{$dev -> device_type}}</td>
-                    <td>{{$dev -> x}}</td>
-                    <td>{{$dev -> y }}</td>
-                    <td>{{$dev -> time}}</td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+       
         <table id="companies" class="table table-bordered">
             <thead>
                 <tr>
                     <th>Companies</th>
                     <th>Devices</th>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>Time</th>
                     <th>Vehicles</th>
                     <th>Drivers</th>
                 </tr>
@@ -179,6 +162,9 @@
                 <tr>
                     <td>{{ $row -> company_name}}</td>
                     <td>{{ $row -> device_type}}</td>
+                    <td>{{ $row -> x}}</td>
+                    <td>{{ $row -> y}}</td>
+                    <td>{{ $row -> datetime}}</td>
                     <td>{{ $row -> license_plate}}</td>
                     <td>{{ $row -> driver_name}}</td>
                 </tr>

@@ -21,18 +21,19 @@ class WelcomeController extends Controller
                     ->leftJoin('vehicles', 'devices.id', '=', 'vehicles.deviceId')
                     ->leftJoin('drivers', 'vehicles.id', '=', 'drivers.vehicleId')
                     ->leftJoin('device_news', 'devices.id', '=', 'device_news.deviceId')
-                    ->select('companies.company_name', 'devices.device_type', 'vehicles.license_plate', 'drivers.driver_name')
+                    ->select('companies.company_name', 'devices.device_type', 'device_news.x', 'device_news.y', 'device_news.datetime', 'vehicles.license_plate', 'drivers.driver_name')
                     ->get();
 
         $device = DB::table('devices')
                     ->leftJoin('device_news', 'devices.id', '=', 'device_news.deviceId')
-                    ->select('devices.device_type', 'device_news.x', 'device_news.y', 'device_news.time')
+                    ->select('devices.device_type', 'device_news.x', 'device_news.y', 'device_news.datetime')
                     ->get();
 
                     return view('/welcome', compact('satwork', 'device'));
 
     }
 
+    /*
     public function update($deviceId, Request $request)
     {
         $data = $request->only(['x', 'y', 'time']);
@@ -46,5 +47,6 @@ class WelcomeController extends Controller
 
         return redirect('/welcome');
     }
+    */
 }
    
