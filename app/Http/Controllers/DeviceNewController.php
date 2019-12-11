@@ -17,7 +17,10 @@ class DeviceNewController extends Controller
     {
         $device_new = Device_new::with(['device']);
 
-        return view('/devices/devices_new', ['device_news' => $device_new->get(), 'devices' => Device::all()]);
+        return Device_new::all()->toJson();
+
+        
+        // return view('/devices/devices_new', ['device_news' => $device_new->get(), 'devices' => Device::all()]);
 
 
         /*

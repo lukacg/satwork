@@ -23,6 +23,15 @@
     <link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css" />
     <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script>
 
+    
+    <script>
+        var newdev = new XMLHttpRequest();
+        newdev.open('GET', '/devices_new');
+        newdev.onload = function() {
+            console.log(newdev.responseText);
+        };
+        newdev.send();
+    </script> 
 
 
 
@@ -207,7 +216,7 @@
             }, 10000);   
         }
 
-        document.getElementById("updatebutton").addEventListener("click", submitUpdate);
+        document.getElementById("updatebutton");
 
     </script>
 
@@ -312,18 +321,24 @@
         })
         .addTo(map);
 
-        //Koordinate iz baze
-        var koordinate = {!! json_encode($device->toArray()) !!};
-        console.log(koordinate);
+        //Coordinates from DB
+        /*
+        var coordinates = {!! json_encode($device->toArray()) !!};
+        console.log(coordinates);*/
 
-        for (var i=0; i < koordinate.length; i++) {
-            if(koordinate[i].x && koordinate[i].y){
-            var marker = L.marker([koordinate[i].x, koordinate[i].y])
-            .bindPopup("Device: "+koordinate[i].device_type+'<br>' + "Time: "+koordinate[i].time)
+        var coordinates = newdev.responseText;
+        console.log(coordinates);
+
+        for (var i=0; i < coordinates.length; i++) {
+            if(coordinates[i].x && coordinates[i].y){
+            var marker = L.marker([coordinates[i].x, coordinates[i].y])
+            .bindPopup("Device: "+coordinates[i].device_type+'<br>' + "Time: "+coordinates[i].datetime)
 
             .addTo(map);
             }
         }
+
+
 
         //Drawing controls
         map.pm.addControls({
