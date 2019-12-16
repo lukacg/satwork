@@ -95,6 +95,13 @@ class DeviceNewController extends Controller
 
         $device_new->save();
 
+        /* $x='47', $y='16';
+
+        $device_new = Device_new::where('deviceId', $id)->first();
+        $device_new->x = $x;
+        $device_new->y = $y;
+        $device_new->datetime = $data['datetime']->now;
+        */ 
     }
 
     /**
