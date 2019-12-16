@@ -58,7 +58,15 @@
 </script>
 
 
-
+<script type="text/javascript">
+    window.onload = function() {
+        var btn = document.getElementsByName('submit')[0];
+        btn.disabled = true;
+        setTimeout(function() {
+            btn.disabled = false;
+        }, 10000);
+    };
+</script>
 
 
 

@@ -17,7 +17,6 @@
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css" />
@@ -82,9 +81,10 @@
         }
     </style>
     <script>
-        
         var map;
         var marker;
+        var markerLayer;
+
 
         $(document).ready(function() {
             $('#companies').DataTable({
@@ -96,11 +96,10 @@
 
             loadMap();
             callAjax();
-
+            myBtn();
         });
 
-        
-        
+
         function callAjax() {
             $.ajax({
                 //the route pointing to the post function
@@ -109,31 +108,33 @@
                 dataType: 'json',
                 // remind that 'data' is the response of the AjaxController
                 success: function(data) {
-                    markerLayer.clearLayer()
-                    var markerLayer = L.featureGroup();
-                    //  markerGroup.addTo(map)
                     var coordinates = data;
+                    markerLayer.clearLayers();
+
                     for (var i = 0; i < coordinates.length; i++) {
                         if (coordinates[i].x && coordinates[i].y) {
                             marker = L.marker([coordinates[i].x, coordinates[i].y])
-                                .bindPopup("Device: " + coordinates[i].device_type + '<br>' + "Time: " + coordinates[i].datetime)
-                                .addTo(map);
+                                .bindPopup("Device: " + coordinates[i].device_type + '<br>' + "Time: " + coordinates[i].datetime);
 
-                            marker.addTo(markerLayer);
+                            marker.addTo(markerLayer).addTo(map);
+
                         }
                     }
-
                     //bounds = new L.LatLngBounds(new L.LatLng(44.752352, 17.125420),new L.LatLng(44.813152, 17.247729));
                     // map.fitBounds(bounds);
 
                     map.fitBounds(markerLayer.getBounds());
 
-
                 },
-                
+
             });
-            //setInterval(callAjax,3000);
+
+            setInterval(callAjax, 30000);
+
+
         }
+
+
 
         function loadMap() {
             // Where you want to render the map.
@@ -153,6 +154,9 @@
             map.pm.addControls({
                 position: 'topleft',
             });
+
+            markerLayer = L.featureGroup().addTo(map);
+
         }
 
         function myFunction() {
@@ -172,6 +176,8 @@
                 }
             }
         }
+
+        
     </script>
 
 </head>
@@ -218,13 +224,14 @@
             <img src="img/LogoIndex.png" alt="Logo" class="responsive">
         </div>
 
-        <div class="writeinfo">
-
+        <div>
+            <input type="submit" id="updatebutton" value="Submit" name="submit">
         </div>
+        <br>
 
         <div id="osm-map"></div>
 
-        <br><br>
+        <br>
 
         <div class="links">
             <a href="/companies">Companies</a>

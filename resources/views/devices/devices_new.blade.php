@@ -20,6 +20,7 @@ Devices
                     <th>Devices</th>
                     <th>X</th>
                     <th>Y</th>
+                    <th>Event</th>
                     <th>Time</th>
                 </tr>
             </thead>
@@ -30,6 +31,7 @@ Devices
                     <td>{{$devn->device->device_type}}</td>
                     <td>{{$devn->x}}</td>
                     <td>{{$devn->y}}</td>
+                    <td>{{$devn->event}}</td>
                     <td>{{$devn->time}}</td>
                 </tr>
                 @endforeach

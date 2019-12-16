@@ -10,7 +10,7 @@ class Device_new extends Model
     protected $table = "device_news";
 
     protected $fillable = [
-       'x', 'y', 'datetime', 'deviceId'
+       'x', 'y', 'event', 'datetime', 'deviceId'
     ];
 
     public $sortable = ['deviceId'];
