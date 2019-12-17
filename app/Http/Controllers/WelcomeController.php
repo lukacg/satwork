@@ -24,12 +24,14 @@ class WelcomeController extends Controller
                     ->select('companies.company_name', 'devices.device_type', 'device_news.x', 'device_news.y', 'device_news.datetime', 'vehicles.license_plate', 'drivers.driver_name')
                     ->get();
 
+                    return view('/welcome', compact('satwork', 'device', 'device_new'));
+
         $device = DB::table('devices')
                     ->leftJoin('device_news', 'devices.id', '=', 'device_news.deviceId')
                     ->select('devices.device_type', 'device_news.x', 'device_news.y', 'device_news.datetime')
                     ->get();
 
-                    return view('/welcome', compact('satwork', 'device'));
+                    return view('/welcome', compact('satwork', 'device', 'deviceId'));
 
     }
 

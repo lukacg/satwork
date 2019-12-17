@@ -86,21 +86,23 @@ class DeviceNewController extends Controller
      */
     public function update($id, Request $request)
     {
-        $data = $request->only(['x', 'y', 'time']);
+        $x='47'; $y='16';
 
         $device_new = Device_new::where('deviceId', $id)->first();
-        $device_new->x = $data['x'];
-        $device_new->y = $data['y'];
-        $device_new->datetime = $data['datetime'];
+        $device_new->x = $x;
+        $device_new->y = $y;
 
         $device_new->save();
+
+        return redirect('/welcome', compact('device_new'));
+
 
         /* $x='47', $y='16';
 
         $device_new = Device_new::where('deviceId', $id)->first();
         $device_new->x = $x;
         $device_new->y = $y;
-        $device_new->datetime = $data['datetime']->now;
+        $device_new->datetime = $data['datetime']->now();
         */ 
     }
 

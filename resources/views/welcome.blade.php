@@ -85,7 +85,6 @@
         var marker;
         var markerLayer;
 
-
         $(document).ready(function() {
             $('#companies').DataTable({
                 "lengthMenu": [
@@ -94,9 +93,13 @@
                 ]
             });
 
+            $('#updatedevice').click(function() {
+                updatedev();
+            });
+
             loadMap();
             callAjax();
-            myBtn();
+
         });
 
 
@@ -133,7 +136,6 @@
 
 
         }
-
 
 
         function loadMap() {
@@ -177,7 +179,9 @@
             }
         }
 
-        
+        function updatedev() {
+            alert("Napravi UPDATE!!!");
+        }
     </script>
 
 </head>
@@ -225,7 +229,8 @@
         </div>
 
         <div>
-            <input type="submit" id="updatebutton" value="Submit" name="submit">
+            <button type="submit" id="updatedevice">UPDATE MAP</button>
+
         </div>
         <br>
 
