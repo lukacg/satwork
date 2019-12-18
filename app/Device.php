@@ -26,7 +26,7 @@ class Device extends Model
     }
 
     public function device_new(){
-        return $this->hasOne("App\DeviceNew", 'device_newId');
+        return $this->hasOne("App\DeviceNew", 'deviceId');
     }
   
 }

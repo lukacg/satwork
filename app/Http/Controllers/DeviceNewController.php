@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Device_new;
 use Illuminate\Http\Request;
 use App\Device;
+use Carbon\Carbon;
 
 class DeviceNewController extends Controller
 {
@@ -19,7 +20,7 @@ class DeviceNewController extends Controller
 
         return Device_new::all()->toJson();
 
-        
+
         // return view('/devices/devices_new', ['device_news' => $device_new->get(), 'devices' => Device::all()]);
 
 
@@ -84,26 +85,27 @@ class DeviceNewController extends Controller
      * @param  \App\Device_new  $device_new
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request)
+    public function update($value,Request $request)
     {
-        $x='47'; $y='16';
-
-        $device_new = Device_new::where('deviceId', $id)->first();
-        $device_new->x = $x;
-        $device_new->y = $y;
-
-        $device_new->save();
-
-        return redirect('/welcome', compact('device_new'));
-
-
-        /* $x='47', $y='16';
-
-        $device_new = Device_new::where('deviceId', $id)->first();
-        $device_new->x = $x;
-        $device_new->y = $y;
-        $device_new->datetime = $data['datetime']->now();
-        */ 
+        return $value;
+        //kod da se dobije broj zapisa u tabeli
+        $broj=Device_new::get()->count();
+        
+       
+        //while i < broj zapisa u tabeli $device_new = Device_new::where('deviceId',1)->update(['x' => $x, 'y' => $y, 'datetime' => $datetime]); prvi put za neparne drugi put za poarne itd
+        if($value==neparnibroj)
+        $i=1;
+        else
+        $i=2; 
+        for ($i; $i<=$broj; $i+=2){
+            $x = rand(44000000, 45000000) / 1000000;
+            $y = rand(16000000, 17000000) / 1000000;
+            $datetime = new Carbon('now','Europe/Belgrade');
+    
+    
+            $device_new = Device_new::where('deviceId',$i)->update(['x' => $x, 'y' => $y, 'datetime' => $datetime]);
+        }
+        return $broj;
     }
 
     /**

@@ -84,8 +84,11 @@
         var map;
         var marker;
         var markerLayer;
+        var updateDeviceNew=1;
 
         $(document).ready(function() {
+
+            console.log('refresh');
             $('#companies').DataTable({
                 "lengthMenu": [
                     [5, 10, 20, -1],
@@ -129,7 +132,6 @@
                     map.fitBounds(markerLayer.getBounds());
 
                 },
-
             });
 
             setInterval(callAjax, 30000);
@@ -180,7 +182,18 @@
         }
 
         function updatedev() {
-            alert("Napravi UPDATE!!!");
+            $.ajax({
+                //the route pointing to the post function
+                url: '/device/update',
+                data:{value:updateDeviceNew},
+                type: 'GET',
+                // remind that 'data' is the response of the AjaxController
+                success: function(data) {
+                   alert(data);
+                   updateDeviceNew++;
+                },
+
+            });
         }
     </script>
 
@@ -230,7 +243,6 @@
 
         <div>
             <button type="submit" id="updatedevice">UPDATE MAP</button>
-
         </div>
         <br>
 
