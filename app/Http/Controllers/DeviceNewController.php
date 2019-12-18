@@ -85,15 +85,16 @@ class DeviceNewController extends Controller
      * @param  \App\Device_new  $device_new
      * @return \Illuminate\Http\Response
      */
-    public function update($value,Request $request)
+    public function update(Request $request)
     {
-        return $value;
+        $value =$request->id;
+        
         //kod da se dobije broj zapisa u tabeli
         $broj=Device_new::get()->count();
         
        
         //while i < broj zapisa u tabeli $device_new = Device_new::where('deviceId',1)->update(['x' => $x, 'y' => $y, 'datetime' => $datetime]); prvi put za neparne drugi put za poarne itd
-        if($value==neparnibroj)
+        if($value=)
         $i=1;
         else
         $i=2; 

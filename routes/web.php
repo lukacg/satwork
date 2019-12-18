@@ -36,7 +36,7 @@ Route::get('/deleteDevice/{id}', 'DeviceController@destroy')->middleware('auth')
 
 //Device_new
 Route::get('/device_new', 'DeviceNewController@index');
-Route::get('/device/update/{value}', 'DeviceNewController@update')->middleware('auth');
+Route::get('/device/update/', 'DeviceNewController@update');
 
 //Vehicles
 Route::get('/vehicles', 'VehicleController@index');

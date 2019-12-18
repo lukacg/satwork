@@ -184,8 +184,8 @@
         function updatedev() {
             $.ajax({
                 //the route pointing to the post function
-                url: '/device/update',
-                data:{value:updateDeviceNew},
+                url: '/device/update/',
+                data:{id:updateDeviceNew},
                 type: 'GET',
                 // remind that 'data' is the response of the AjaxController
                 success: function(data) {
