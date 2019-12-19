@@ -15,7 +15,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
@@ -84,7 +83,7 @@
         var map;
         var marker;
         var markerLayer;
-        var updateDeviceNew=1;
+        var updateDeviceNew = 1;
 
         $(document).ready(function() {
 
@@ -116,11 +115,19 @@
                 // remind that 'data' is the response of the AjaxController
                 success: function(data) {
                     var coordinates = data;
+
                     markerLayer.clearLayers();
 
                     for (var i = 0; i < coordinates.length; i++) {
+                        var icon = getMarkerType(coordinates[i].event);
                         if (coordinates[i].x && coordinates[i].y) {
-                            marker = L.marker([coordinates[i].x, coordinates[i].y])
+
+                            marker = L.marker([coordinates[i].x, coordinates[i].y], {
+                                    icon: icon
+                                })
+
+                                //kod za ikonu markera icon:nesto  
+
                                 .bindPopup("Device ID: " + coordinates[i].deviceId + '<br>' + "Time: " + coordinates[i].datetime);
 
                             marker.addTo(markerLayer).addTo(map);
@@ -132,6 +139,33 @@
                 },
             });
             setTimeout(callAjax, 10000);
+        }
+
+        function getMarkerType(vrijednost koja se salje) {
+            switch(vrijednost koka je dosla){
+                case za vrijednost koja je dosla
+                var icon = L.icon({
+                iconUrl: 'icons/letter_a.png'
+            });
+            }
+     
+            return icon;
+        }
+
+        //DeviceNew Update
+        function updatedev() {
+            $.ajax({
+                //the route pointing to the post function
+                url: '/device/update/',
+                data: {
+                    id: updateDeviceNew
+                },
+                type: 'GET',
+                // remind that 'data' is the response of the AjaxController
+                success: function(data) {
+                    updateDeviceNew++;
+                },
+            });
         }
 
         //MAP
@@ -175,20 +209,6 @@
                     }
                 }
             }
-        }
-
-        //DeviceNew Update
-        function updatedev() {
-            $.ajax({
-                //the route pointing to the post function
-                url: '/device/update/',
-                data:{id:updateDeviceNew},
-                type: 'GET',
-                // remind that 'data' is the response of the AjaxController
-                success: function(data) {
-                   updateDeviceNew++;
-                },
-            });
         }
     </script>
 
