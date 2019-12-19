@@ -141,15 +141,16 @@
             setTimeout(callAjax, 10000);
         }
 
-        function getMarkerType(vrijednost koja se salje) {
-            switch(vrijednost koka je dosla){
+        function getMarkerType(vrijednost) {
+            console.log(vrijednost)
+            /*switch(vrijednost koka je dosla){
                 case za vrijednost koja je dosla
-                var icon = L.icon({
+                       var icon = L.icon({
                 iconUrl: 'icons/letter_a.png'
-            });
+            });*/
             }
      
-            return icon;
+            //return icon;
         }
 
         //DeviceNew Update
