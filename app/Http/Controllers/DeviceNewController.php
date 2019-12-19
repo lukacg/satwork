@@ -94,13 +94,13 @@ class DeviceNewController extends Controller
         
        
         //while i < broj zapisa u tabeli $device_new = Device_new::where('deviceId',1)->update(['x' => $x, 'y' => $y, 'datetime' => $datetime]); prvi put za neparne drugi put za poarne itd
-        if($value=)
+        if($value%2!=0)
         $i=1;
         else
         $i=2; 
         for ($i; $i<=$broj; $i+=2){
             $x = rand(44000000, 45000000) / 1000000;
-            $y = rand(16000000, 17000000) / 1000000;
+            $y = rand(16500000, 17500000) / 1000000;
             $datetime = new Carbon('now','Europe/Belgrade');
     
     

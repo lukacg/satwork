@@ -107,6 +107,7 @@
 
 
         function callAjax() {
+            console.log('ajax');
             $.ajax({
                 //the route pointing to the post function
                 url: '/device_new',
@@ -120,26 +121,20 @@
                     for (var i = 0; i < coordinates.length; i++) {
                         if (coordinates[i].x && coordinates[i].y) {
                             marker = L.marker([coordinates[i].x, coordinates[i].y])
-                                .bindPopup("Device: " + coordinates[i].device_type + '<br>' + "Time: " + coordinates[i].datetime);
+                                .bindPopup("Device ID: " + coordinates[i].deviceId + '<br>' + "Time: " + coordinates[i].datetime);
 
                             marker.addTo(markerLayer).addTo(map);
-
                         }
                     }
                     //bounds = new L.LatLngBounds(new L.LatLng(44.752352, 17.125420),new L.LatLng(44.813152, 17.247729));
                     // map.fitBounds(bounds);
-
                     map.fitBounds(markerLayer.getBounds());
-
                 },
             });
-
-            setInterval(callAjax, 30000);
-
-
+            setTimeout(callAjax, 10000);
         }
 
-
+        //MAP
         function loadMap() {
             // Where you want to render the map.
             var element = document.getElementById('osm-map');
@@ -163,6 +158,7 @@
 
         }
 
+        //Dropdown
         function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
         }
@@ -181,6 +177,7 @@
             }
         }
 
+        //DeviceNew Update
         function updatedev() {
             $.ajax({
                 //the route pointing to the post function
@@ -189,10 +186,8 @@
                 type: 'GET',
                 // remind that 'data' is the response of the AjaxController
                 success: function(data) {
-                   alert(data);
                    updateDeviceNew++;
                 },
-
             });
         }
     </script>
@@ -234,7 +229,6 @@
 
     <br><br>
 
-
     <!--CONTENT-->
     <div class="content">
         <div class="title m-b-md">
@@ -258,7 +252,6 @@
         </div>
         <br><br>
 
-
         <table id="companies" class="table table-bordered">
             <thead>
                 <tr>
@@ -274,7 +267,6 @@
             </p>
             <tbody>
                 @foreach ($satwork as $row)
-
                 <tr>
                     <td>{{ $row -> company_name}}</td>
                     <td>{{ $row -> device_type}}</td>
