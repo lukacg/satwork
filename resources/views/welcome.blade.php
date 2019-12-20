@@ -136,7 +136,7 @@
                     //bounds = new L.LatLngBounds(new L.LatLng(44.752352, 17.125420),new L.LatLng(44.813152, 17.247729));
                     // map.fitBounds(bounds);
 
-                    map.fitBounds(markerLayer.getBounds(), {padding: [10, 10]});
+                    map.fitBounds(markerLayer.getBounds(), { padding: [50, 50] });
                 },
             });
             setTimeout(callAjax, 10000);

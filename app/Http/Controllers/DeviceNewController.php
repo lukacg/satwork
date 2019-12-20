@@ -99,8 +99,8 @@ class DeviceNewController extends Controller
         else
         $i=2; 
         for ($i; $i<=$broj; $i+=2){
-            $x = rand(44000000, 45000000) / 1000000;
-            $y = rand(16500000, 17500000) / 1000000;
+            $x = rand(44450000, 45000000) / 1000000;
+            $y = rand(16400000, 17900000) / 1000000;
             $event=rand(1,4);
             $datetime = new Carbon('now','Europe/Belgrade');
     
