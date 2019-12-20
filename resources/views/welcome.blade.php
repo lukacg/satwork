@@ -135,22 +135,40 @@
                     }
                     //bounds = new L.LatLngBounds(new L.LatLng(44.752352, 17.125420),new L.LatLng(44.813152, 17.247729));
                     // map.fitBounds(bounds);
-                    map.fitBounds(markerLayer.getBounds());
+
+                    map.fitBounds(markerLayer.getBounds(), {padding: [10, 10]});
                 },
             });
             setTimeout(callAjax, 10000);
         }
 
-        function getMarkerType(vrijednost) {
-            console.log(vrijednost)
-            /*switch(vrijednost koka je dosla){
-                case za vrijednost koja je dosla
+        //Custom markers
+        function getMarkerType(value) {
+            //console.log(vrijednost)
+            switch(value){
+                case 1 :
                        var icon = L.icon({
                 iconUrl: 'icons/letter_a.png'
-            });*/
+                });
+                break;
+                case 2 :
+                       var icon = L.icon({
+                iconUrl: 'icons/letter_b.png'
+                });
+                break;
+                case 3 :
+                       var icon = L.icon({
+                iconUrl: 'icons/letter_c.png'
+                });
+                break;
+                case 4 :
+                       var icon = L.icon({
+                iconUrl: 'icons/letter_d.png'
+                });
+                break;
             }
      
-            //return icon;
+            return icon;
         }
 
         //DeviceNew Update
