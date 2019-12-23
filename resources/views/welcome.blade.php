@@ -79,6 +79,7 @@
             padding-bottom: 60px;
         }
     </style>
+    
     <script>
         var map;
         var marker;
@@ -130,45 +131,18 @@
 
                                 .bindPopup("Device ID: " + coordinates[i].deviceId + '<br>' + "Time: " + coordinates[i].datetime);
 
-                            marker.addTo(markerLayer).addTo(map);
+                            marker.addTo(markerLayer);
                         }
                     }
                     //bounds = new L.LatLngBounds(new L.LatLng(44.752352, 17.125420),new L.LatLng(44.813152, 17.247729));
                     // map.fitBounds(bounds);
 
-                    map.fitBounds(markerLayer.getBounds(), { padding: [50, 50] });
+                    map.fitBounds(markerLayer.getBounds(), {
+                        padding: [50, 50]
+                    });
                 },
             });
             setTimeout(callAjax, 10000);
-        }
-
-        //Custom markers
-        function getMarkerType(value) {
-            //console.log(vrijednost)
-            switch(value){
-                case 1 :
-                       var icon = L.icon({
-                iconUrl: 'icons/letter_a.png'
-                });
-                break;
-                case 2 :
-                       var icon = L.icon({
-                iconUrl: 'icons/letter_b.png'
-                });
-                break;
-                case 3 :
-                       var icon = L.icon({
-                iconUrl: 'icons/letter_c.png'
-                });
-                break;
-                case 4 :
-                       var icon = L.icon({
-                iconUrl: 'icons/letter_d.png'
-                });
-                break;
-            }
-     
-            return icon;
         }
 
         //DeviceNew Update
@@ -185,6 +159,34 @@
                     updateDeviceNew++;
                 },
             });
+        }
+
+        //Custom markers
+        function getMarkerType(value) {
+            //console.log(vrijednost)
+            switch (value) {
+                case 1:
+                    var icon = L.icon({
+                        iconUrl: 'icons/letter_a.png'
+                    });
+                    break;
+                case 2:
+                    var icon = L.icon({
+                        iconUrl: 'icons/letter_b.png'
+                    });
+                    break;
+                case 3:
+                    var icon = L.icon({
+                        iconUrl: 'icons/letter_c.png'
+                    });
+                    break;
+                case 4:
+                    var icon = L.icon({
+                        iconUrl: 'icons/letter_d.png'
+                    });
+                    break;
+            }
+            return icon;
         }
 
         //MAP
