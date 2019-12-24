@@ -134,6 +134,7 @@
                             marker.addTo(markerLayer);
                         }
                     }
+                    
                     //bounds = new L.LatLngBounds(new L.LatLng(44.752352, 17.125420),new L.LatLng(44.813152, 17.247729));
                     // map.fitBounds(bounds);
 
