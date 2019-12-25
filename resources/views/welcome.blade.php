@@ -85,6 +85,7 @@
         var marker;
         var markerLayer;
         var updateDeviceNew = 1;
+        var prethodneX=0;
 
         $(document).ready(function() {
 
@@ -102,6 +103,8 @@
 
             loadMap();
             callAjax();
+            callAjaxAgain();
+            setInterval(callAjaxAgain, 10000);
 
         });
 
@@ -116,36 +119,54 @@
                 // remind that 'data' is the response of the AjaxController
                 success: function(data) {
                     var coordinates = data;
-
                     markerLayer.clearLayers();
-
                     for (var i = 0; i < coordinates.length; i++) {
                         var icon = getMarkerType(coordinates[i].event);
-                        if (coordinates[i].x && coordinates[i].y) {
-
-                            marker = L.marker([coordinates[i].x, coordinates[i].y], {
-                                    icon: icon
-                                })
-
-                                //kod za ikonu markera icon:nesto  
-
-                                .bindPopup("Device ID: " + coordinates[i].deviceId + '<br>' + "Time: " + coordinates[i].datetime);
-
-                            marker.addTo(markerLayer);
-                        }
+                        addMarker(icon,coordinates[i].x,coordinates[i].y,coordinates[i].deviceId ,coordinates[i].datetime);
+                        prethodneX = coordinates[i].x;
                     }
-                    
-                    //bounds = new L.LatLngBounds(new L.LatLng(44.752352, 17.125420),new L.LatLng(44.813152, 17.247729));
-                    // map.fitBounds(bounds);
-
                     map.fitBounds(markerLayer.getBounds(), {
                         padding: [50, 50]
                     });
+                    
                 },
             });
-            setTimeout(callAjax, 10000);
+           
         }
-
+        function callAjaxAgain(){
+            console.log('ajaxAgain');
+            $.ajax({
+                //the route pointing to the post function
+                url: '/device_new',
+                type: 'GET',
+                dataType: 'json',
+                // remind that 'data' is the response of the AjaxController
+                success: function(data) {
+                    var coordinates = data;
+                    //markerLayer.clearLayers();
+                    for (var i = 0; i < coordinates.length; i++) {
+                        var icon = getMarkerType(coordinates[i].event);
+                        if (coordinates[i].x != prethodneX){ //popraviti
+                            editMarker(icon,coordinates[i].x,coordinates[i].y,coordinates[i].deviceId ,coordinates[i].datetime);
+                        }
+                    }
+                },
+            });
+        }
+        function addMarker(icon,x,y,deviceId,date){
+            marker = L.marker([x, y] ,{icon: icon})
+                    .bindPopup("Device ID: " + deviceId + '<br>' + "Time: " + date);
+                        
+            marker.addTo(markerLayer);
+            
+        }
+        function editMarker(icon,x,y,deviceId,date){
+            console.log('promjenjene');
+            marker = L.marker([x, y] ,{icon: icon})
+                    .bindPopup("Device ID: " + deviceId + '<br>' + "Time: " + date);
+                        
+            marker.addTo(markerLayer);
+        }
         //DeviceNew Update
         function updatedev() {
             $.ajax({
