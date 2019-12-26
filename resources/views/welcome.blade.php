@@ -85,7 +85,7 @@
         var marker;
         var markerLayer;
         var updateDeviceNew = 1;
-        var prethodneX=0;
+        var prethodneX;
 
         $(document).ready(function() {
 
@@ -123,7 +123,11 @@
                         var icon = getMarkerType(coordinates[i].event);
                         addMarker(icon,coordinates[i].x,coordinates[i].y,coordinates[i].deviceId ,coordinates[i].datetime);
                         
-                        prethodneX = coordinates[i].x;
+                        var prethodneX = coordinates[i].x;
+                        /*for(var i = 0; i<prethodneX.length; i++){
+                            prethodneX += coordinates[i].x;
+                        }*/
+
                     }
                     map.fitBounds(markerLayer.getBounds(), {
                         padding: [50, 50]
@@ -142,7 +146,7 @@
                 // remind that 'data' is the response of the AjaxController
                 success: function(data) {
                     var coordinates = data;
-                    //markerLayer.clearLayers();
+                    markerLayer.clearLayers();
                     for (var i = 0; i < coordinates.length; i++) {
                         var icon = getMarkerType(coordinates[i].event);
                         console.log(coordinates[i].x);
